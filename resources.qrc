@@ -1,0 +1,22 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>icons/plus-circle.svg</file>
+        <file>icons/edit.svg</file>
+        <file>icons/trash-2.svg</file>
+        <file>icons/search.svg</file>
+        <file>icons/settings.png</file>
+        <file>icons/import.png</file>
+        <file>icons/star.png</file>
+    </qresource>
+
+<!--    <qresource prefix="/i18n">-->
+<!--        <file>i18n/lab3_en_US.qm</file>-->
+<!--&lt;!&ndash;        <file>i18n/lab3_uk_UA.qm</file>&ndash;&gt;-->
+<!--    </qresource>-->
+
+    <qresource prefix="/styles">
+        <file>styles/dark.qss</file>
+        <file>styles/light.qss</file>
+    </qresource>
+</RCC>

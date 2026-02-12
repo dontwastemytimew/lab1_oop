@@ -1,0 +1,9 @@
+cmake-build-debug/
+build/
+.idea/
+*.user
+*.exe
+*.o
+*.obj
+*.dll
+*.gch

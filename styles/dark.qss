@@ -1,0 +1,120 @@
+/* --- ЗАГАЛЬНІ НАЛАШТУВАННЯ --- */
+QWidget {
+    background-color: #2b2b2b; /* Темно-сірий фон вікна */
+    color: #ffffff;            /* Білий текст */
+    font-family: "Segoe UI", sans-serif;
+    font-size: 10pt;
+}
+
+/* --- ЗАГОЛОВОК ДОДАТКУ --- */
+QLabel#appTitleLabel {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #ff69b4; /* HotPink */
+    padding: 15px 0;
+    background-color: transparent;
+}
+
+/* --- СПИСОК НОТАТОК --- */
+QListWidget {
+    background-color: #2b2b2b;
+    border: none;
+    outline: 0;
+}
+
+QListWidget::item {
+    background-color: #3a3a3a; /* Темно-сіра картка */
+    border: 1px solid #555555; /* Стримана сіра рамка */
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+}
+
+/* Ефект при НАВЕДЕННІ */
+QListWidget::item:hover {
+    background-color: #404040;
+    border: 2px solid #ff69b4; /* Яскраво-рожева рамка світиться */
+}
+
+/* Ефект при ВИБОРІ */
+QListWidget::item:selected {
+    background-color: #442030; /* Темно-бордовий (рожевий відтінок) */
+    border: 2px solid #ff85c2; /* Світло-рожева рамка */
+}
+
+/* --- ВМІСТ КАРТКИ --- */
+QWidget#NoteWidget {
+    background-color: transparent;
+    border: none;
+}
+
+/* Заголовок нотатки */
+QWidget#NoteWidget QLabel#titleLabel {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 13pt;
+    background-color: #442030; /* Темно-рожевий фон під заголовком */
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-bottom: 2px;
+}
+
+QWidget#NoteWidget QLabel#dateLabel {
+    color: #aaaaaa;         /* Світло-сірий */
+    font-style: italic;
+    background-color: transparent; /* Прозорий */
+    font-size: 10pt;
+    padding: 0px;
+}
+
+/* Теги (Прозорі, як і в світлій темі) */
+QWidget#NoteWidget QLabel#tagsLabel {
+    background-color: transparent; /* Прозорий */
+    color: #ff85c2;            /* Світло-рожевий текст */
+    font-weight: bold;
+    font-size: 9pt;
+    padding: 0px;
+}
+
+QWidget#NoteWidget QLabel#pinLabel {
+    background-color: transparent;
+}
+
+/* --- КНОПКИ --- */
+QPushButton {
+    background-color: #ff69b4; /* HotPink */
+    color: #ffffff;            /* Білий текст */
+    border-radius: 5px;
+    border: none;
+    padding: 8px 10px;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+QPushButton:hover {
+    background-color: #ff85c2; /* Світліший */
+}
+
+QPushButton:pressed {
+    background-color: #d14785; /* Темніший */
+}
+
+/* --- ПОЛЯ ВВОДУ --- */
+QLineEdit, QComboBox {
+    background-color: #333333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 4px;
+    color: white;
+    selection-background-color: #ff69b4;
+}
+
+QLineEdit:focus {
+    border: 2px solid #ff69b4; /* Рожева рамка при фокусі */
+}
+
+
+QWidget#NoteWidget QLabel {
+    min-height: 20px;
+    qproperty-wordWrap: true;
+}
