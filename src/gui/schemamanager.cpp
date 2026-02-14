@@ -2,11 +2,12 @@
 #include "ui_schemamanager.h"
 #include "schemaeditor.h"
 #include <QDebug>
+#include <QMessageBox>
 
-SchemaManager::SchemaManager(DataManager *dataManager, QWidget *parent) :
+SchemaManager::SchemaManager(NoteRepository *repository, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SchemaManager),
-    m_dataManager(dataManager)
+    m_repository(repository)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Керування схемами"));
@@ -23,7 +24,7 @@ SchemaManager::~SchemaManager() {
 void SchemaManager::updateSchemasList()
 {
     ui->schemasListWidget->clear();
-    for (const auto& schema : m_dataManager->getSchemas()) {
+    for (const auto& schema : m_repository->getSchemas()) {
         ui->schemasListWidget->addItem(schema.getName());
     }
 }
@@ -35,7 +36,8 @@ void SchemaManager::openSchemaEditor()
     {
         Schema newSchema = editor.getSchema();
         qInfo() << tr("Створено нову схему з назвою: %1").arg(newSchema.getName());
-        m_dataManager->addSchema(newSchema);
+
+        m_repository->addSchema(newSchema);
         updateSchemasList();
     } else {
         qInfo() << tr("Створення нової схеми було скасовано користувачем.");
@@ -51,7 +53,7 @@ void SchemaManager::on_deleteSchemaButton_clicked()
     }
 
     qInfo() << tr("Видалено схему з індексом: %1").arg(currentIndex);
-    m_dataManager->removeSchema(currentIndex);
+    m_repository->removeSchema(currentIndex);
     updateSchemasList();
 }
 
@@ -63,7 +65,7 @@ void SchemaManager::on_editSchemaButton_clicked()
         return;
     }
 
-    const Schema& schemaToEdit = m_dataManager->getSchemas()[currentIndex];
+    const Schema& schemaToEdit = m_repository->getSchemas()[currentIndex];
     qInfo() << tr("Відкрито редактор для схеми: %1").arg(schemaToEdit.getName());
 
     SchemaEditor editor(schemaToEdit, this);
@@ -71,7 +73,8 @@ void SchemaManager::on_editSchemaButton_clicked()
     {
         qInfo() << tr("Зміни до схеми '%1' збережено.").arg(schemaToEdit.getName());
         Schema updatedSchema = editor.getSchema();
-        m_dataManager->updateSchema(currentIndex, updatedSchema);
+
+        m_repository->updateSchema(currentIndex, updatedSchema);
         updateSchemasList();
     }
 }

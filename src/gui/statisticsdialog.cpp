@@ -1,11 +1,12 @@
 #include "statisticsdialog.h"
 #include "ui_statisticsdialog.h"
 #include "qcustomplot.h"
+#include "statistics_service.h"
 
-StatisticsDialog::StatisticsDialog(DataManager* dataManager, QWidget *parent) :
+StatisticsDialog::StatisticsDialog(NoteRepository* repository, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::StatisticsDialog),
-    m_dataManager(dataManager)
+    m_repository(repository)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Статистика нотаток"));
@@ -19,20 +20,8 @@ StatisticsDialog::~StatisticsDialog() {
 }
 
 void StatisticsDialog::setupChart() {
-    QMap<QString, int> counts;
-    const auto& schemas = m_dataManager->getSchemas();
-    const auto& notes = m_dataManager->getNotes();
 
-    for(const auto& schema : schemas) {
-        counts[schema.getName()] = 0;
-    }
-
-    for(const auto& note : notes) {
-        if(note.getSchemaId() < schemas.size()) {
-            QString schemaName = schemas[note.getSchemaId()].getName();
-            counts[schemaName]++;
-        }
-    }
+    QMap<QString, int> counts = StatisticsService::getNotesCountByCategory(m_repository);
 
     QCPBars *bars = new QCPBars(ui->plotWidget->xAxis, ui->plotWidget->yAxis);
     bars->setName(tr("Кількість нотаток"));
@@ -62,14 +51,18 @@ void StatisticsDialog::setupChart() {
     ui->plotWidget->xAxis->setLabel(tr("Категорії (Схеми)"));
 
     ui->plotWidget->yAxis->setRange(0, 10);
-    ui->plotWidget->yAxis->setPadding(5); 
+    ui->plotWidget->yAxis->setPadding(5);
     ui->plotWidget->yAxis->setLabel(tr("Кількість"));
     ui->plotWidget->yAxis->grid()->setSubGridVisible(true);
 
     bars->setData(ticks, values);
 
     ui->plotWidget->rescaleAxes();
-    ui->plotWidget->yAxis->setRangeUpper(ui->plotWidget->yAxis->range().upper * 1.2);
+    if (ui->plotWidget->yAxis->range().upper < 1.0) {
+       ui->plotWidget->yAxis->setRangeUpper(5.0);
+    } else {
+       ui->plotWidget->yAxis->setRangeUpper(ui->plotWidget->yAxis->range().upper * 1.2);
+    }
 
     ui->plotWidget->replot();
 }

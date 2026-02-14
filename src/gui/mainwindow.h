@@ -1,6 +1,7 @@
 #pragma once
 #include <QMainWindow>
-#include "datamanager.h"
+#include <memory>
+#include "note_repository.h"
 #include <QListWidgetItem>
 #include <QElapsedTimer>
 #include <QCloseEvent>
@@ -14,7 +15,7 @@ namespace Ui { class MainWindow; }
  *
  * Відповідає за відображення основного інтерфейсу, списку нотаток та кнопок
  * для основних дій. Виступає як центральний вузол, що координує роботу
- * інших дочірніх вікон та DataManager.
+ * інших дочірніх вікон та NoteRepository.
  */
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -22,7 +23,7 @@ class MainWindow : public QMainWindow {
 public:
     /**
      * @brief Конструктор головного вікна.
-     * @param parent Вказівник на батьківський віджет (зазвичай nullptr).
+     * @param parent Вказівник на батьківський віджет.
      */
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -30,21 +31,21 @@ public:
     /**
      * @brief Оновлює список нотаток на екрані.
      *
-     * @details Викликає сортування даних у DataManager, очищує QListWidget,
+     * @details Викликає сортування даних у NoteRepository, очищує QListWidget,
      * та заповнює його новими кастомними віджетами нотаток (`NoteWidget`),
      * враховуючи поточний текст у полі пошуку.
      */
     void updateNotesList();
 
 private slots:
-    // --- Слоти для кнопок ---
+    // Слоти для кнопок
     void on_manageSchemasButton_clicked();
     void on_createNoteButton_clicked();
 
     /**
      * @brief Інкапсулює логіку видалення нотатки.
      *
-     * Визначає обраний елемент, викликає видалення з DataManager та оновлює список.
+     * Визначає обраний елемент, викликає видалення з NoteRepository та оновлює список.
      * Викликається з контекстного меню та кнопки "Видалити".
      */
     void deleteNoteLogic();
@@ -56,13 +57,13 @@ private slots:
     /**
      * @brief Слот, що спрацьовує при зміні типу сортування у ComboBox.
      *
-     * Запускає процес сортування нотаток у сховищі DataManager згідно з обраним типом,
+     * Запускає процес сортування нотаток у сховищі NoteRepository згідно з обраним типом,
      * а потім оновлює відображення списку.
      * @param index Індекс обраного елемента, що відповідає типу сортування (SortType).
      */
     void on_sortComboBox_currentIndexChanged(int index);
 
-    // --- Слоти для взаємодії зі списком нотаток ---
+    // Слоти для взаємодії зі списком нотаток
     /**
      * @brief Викликається при подвійному кліку на елемент списку нотаток.
      *
@@ -102,14 +103,19 @@ protected:
 
 
 private:
-    Ui::MainWindow *ui; ///< Вказівник на об'єкти, створені у Qt Designer.
-    DataManager m_dataManager; ///< Екземпляр "мозку" програми, що зберігає всі дані.
+    Ui::MainWindow *ui;
+
+    /**
+     * @brief Екземпляр "мозку" програми, що зберігає всі дані.
+     * Використовує std::unique_ptr для керування часом життя.
+     */
+    std::unique_ptr<NoteRepository> m_repository;
 
     /**
      * @brief Таймер для відстеження часу, проведеного в поточній сесії.
      *
      * @details Використовується для модуля статистики: час, що минув,
-     * реєструється у DataManager при закритті програми.
+     * реєструється у NoteRepository при закритті програми.
      */
     QElapsedTimer m_sessionTimer;
 };

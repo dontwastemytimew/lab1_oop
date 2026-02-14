@@ -17,10 +17,12 @@ include_directories(
 )
 
 set(CORE_SOURCES
-        src/core/datamanager.h src/core/datamanager.cpp
-        src/core/schema.h      src/core/schema.cpp
-        src/core/note.h        src/core/note.cpp
-        src/utils/logger.h     src/utils/logger.cpp
+        src/core/schema.h                   src/core/schema.cpp
+        src/core/note.h                     src/core/note.cpp
+        src/utils/logger.h                  src/utils/logger.cpp
+        src/core/istorage_strategy.h        src/core/json_storage_strategy.h
+        src/core/note_repository.h          src/core/note_repository.cpp
+        src/core/export_service.cpp         src/core/statistics_service.cpp
 )
 
 add_library(QCustomPlotLib STATIC libs/qcustomplot.cpp libs/qcustomplot.h)

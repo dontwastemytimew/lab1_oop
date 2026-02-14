@@ -9,22 +9,65 @@
 #include <QBuffer>
 #include <QPixmap>
 #include <QByteArray>
+#include <QDebug>
 
-NoteEditor::NoteEditor(DataManager *dataManager, QWidget *parent) :
+NoteEditor::NoteEditor(NoteRepository *repository, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NoteEditor),
-    m_dataManager(dataManager)
+    m_repository(repository)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("Редактор нотатки"));
+    setWindowTitle(tr("Створити нотатку"));
 
-    for (const auto& schema : m_dataManager->getSchemas()) {
+    for (const auto& schema : m_repository->getSchemas()) {
         ui->schemaComboBox->addItem(schema.getName());
     }
 
-
     connect(ui->schemaComboBox, &QComboBox::currentIndexChanged, this, &NoteEditor::onSchemaSelected);
-    onSchemaSelected(0);
+
+    if (!m_repository->getSchemas().isEmpty()) {
+        onSchemaSelected(0);
+    }
+}
+
+NoteEditor::NoteEditor(NoteRepository *repository, const Note &noteToEdit, QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::NoteEditor),
+    m_repository(repository)
+{
+    ui->setupUi(this);
+    setWindowTitle(tr("Редагувати нотатку"));
+
+    for (const auto& schema : m_repository->getSchemas()) {
+        ui->schemaComboBox->addItem(schema.getName());
+    }
+
+    ui->titleLineEdit->setText(noteToEdit.getTitle());
+
+    ui->schemaComboBox->setCurrentIndex(noteToEdit.getSchemaId());
+    ui->schemaComboBox->setEnabled(false);
+
+    onSchemaSelected(noteToEdit.getSchemaId());
+
+    const auto& fields = noteToEdit.getFields();
+    if (noteToEdit.getSchemaId() < m_repository->getSchemas().size()) {
+        const auto& schemaFields = m_repository->getSchemas()[noteToEdit.getSchemaId()].getFields();
+
+        for (int i = 0; i < schemaFields.size(); ++i) {
+            const QString& fieldName = schemaFields[i].name;
+            if (fields.contains(fieldName) && i < m_fieldInputs.size()) {
+                m_fieldInputs[i]->setText(fields.value(fieldName));
+            }
+        }
+    }
+
+    m_currentImageBase64 = noteToEdit.getImage();
+    if (!m_currentImageBase64.isEmpty()) {
+        displayImage(m_currentImageBase64);
+        ui->addImageButton->setText(tr("Змінити фото"));
+    }
+
+    m_originalTags = noteToEdit.getTags();
 }
 
 NoteEditor::~NoteEditor() {
@@ -33,11 +76,12 @@ NoteEditor::~NoteEditor() {
 
 void NoteEditor::onSchemaSelected(int index)
 {
-    const auto& schemas = m_dataManager->getSchemas();
+    const auto& schemas = m_repository->getSchemas();
     if (index < 0 || index >= schemas.size()) return;
     const Schema& selectedSchema = schemas[index];
 
-    qInfo() << tr("У редакторі нотаток обрано схему '%1'. Генерується %2 полів.").arg(selectedSchema.getName()).arg(selectedSchema.getFields().size());
+    qInfo() << tr("У редакторі нотаток обрано схему '%1'. Генерується %2 полів.")
+               .arg(selectedSchema.getName()).arg(selectedSchema.getFields().size());
 
     if (ui->fieldsScrollArea->widget()) {
         delete ui->fieldsScrollArea->widget();
@@ -61,59 +105,25 @@ Note NoteEditor::getNote() const
 {
     QString title = ui->titleLineEdit->text();
     int schemaIndex = ui->schemaComboBox->currentIndex();
-    const Schema& selectedSchema = m_dataManager->getSchemas()[schemaIndex];
+
+    const Schema& selectedSchema = m_repository->getSchemas()[schemaIndex];
 
     Note newNote(title, schemaIndex);
 
     for (int i = 0; i < selectedSchema.getFields().size(); ++i) {
-        QString fieldName = selectedSchema.getFields()[i].name;
-        QString fieldValue = m_fieldInputs[i]->text();
-        newNote.addField(fieldName, fieldValue);
+        if (i < m_fieldInputs.size()) {
+            QString fieldName = selectedSchema.getFields()[i].name;
+            QString fieldValue = m_fieldInputs[i]->text();
+            newNote.addField(fieldName, fieldValue);
+        }
     }
 
     newNote.setTags(m_originalTags);
-
     newNote.setImage(m_currentImageBase64);
 
     return newNote;
 }
 
-NoteEditor::NoteEditor(DataManager *dataManager, const Note &noteToEdit, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::NoteEditor),
-    m_dataManager(dataManager)
-{
-    ui->setupUi(this);
-    setWindowTitle(tr("Редактор нотатки"));
-
-    for (const auto& schema : m_dataManager->getSchemas()) {
-        ui->schemaComboBox->addItem(schema.getName());
-    }
-
-    ui->titleLineEdit->setText(noteToEdit.getTitle());
-    ui->schemaComboBox->setCurrentIndex(noteToEdit.getSchemaId());
-    ui->schemaComboBox->setEnabled(false);
-
-    onSchemaSelected(noteToEdit.getSchemaId());
-    const auto& fields = noteToEdit.getFields();
-    const auto& schemaFields = m_dataManager->getSchemas()[noteToEdit.getSchemaId()].getFields();
-
-    for (int i = 0; i < schemaFields.size(); ++i) {
-        const QString& fieldName = schemaFields[i].name;
-        if (fields.contains(fieldName) && i < m_fieldInputs.size()) {
-            m_fieldInputs[i]->setText(fields.value(fieldName));
-        }
-    }
-
-
-    m_currentImageBase64 = noteToEdit.getImage();
-    if (!m_currentImageBase64.isEmpty()) {
-        displayImage(m_currentImageBase64);
-        ui->addImageButton->setText(tr("Змінити фото"));
-    }
-
-    m_originalTags = noteToEdit.getTags();
-}
 
 void NoteEditor::accept()
 {
@@ -145,7 +155,6 @@ void NoteEditor::on_addImageButton_clicked()
     QFile file(fileName);
     if (file.open(QIODevice::ReadOnly)) {
         QByteArray imageData = file.readAll();
-
         m_currentImageBase64 = QString::fromLatin1(imageData.toBase64());
 
         displayImage(m_currentImageBase64);

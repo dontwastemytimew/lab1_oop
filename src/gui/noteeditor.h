@@ -1,6 +1,6 @@
 #pragma once
 #include <QDialog>
-#include "datamanager.h"
+#include "note_repository.h"
 #include <QLineEdit>
 #include "note.h"
 
@@ -21,21 +21,21 @@ class NoteEditor : public QDialog {
 public:
     /**
      * @brief Конструктор для створення нової нотатки.
-     * @param dataManager Вказівник на центральне сховище даних.
+     * @param repository Вказівник на репозиторій нотаток.
      * @param parent Вказівник на батьківський віджет.
      */
-    explicit NoteEditor(DataManager *dataManager, QWidget *parent = nullptr);
+    explicit NoteEditor(NoteRepository *repository, QWidget *parent = nullptr);
 
     /**
      * @brief Конструктор для редагування існуючої нотатки.
      *
      * @details Завантажує всі дані, включаючи поля, теги та зображення,
      * з об'єкта @c noteToEdit в інтерфейс.
-     * @param dataManager Вказівник на центральне сховище даних.
+     * @param repository Вказівник на репозиторій нотаток.
      * @param noteToEdit Нотатка, дані якої потрібно завантажити в редактор.
      * @param parent Вказівник на батьківський віджет.
      */
-    explicit NoteEditor(DataManager *dataManager, const Note& noteToEdit, QWidget *parent = nullptr);
+    explicit NoteEditor(NoteRepository *repository, const Note& noteToEdit, QWidget *parent = nullptr);
 
     ~NoteEditor();
 
@@ -90,7 +90,7 @@ private:
     void displayImage(const QString& base64);
 
     Ui::NoteEditor *ui;             ///< Вказівник на об'єкти інтерфейсу.
-    DataManager *m_dataManager;     ///< Вказівник на "мозок" програми.
+    NoteRepository *m_repository;   ///< Вказівник на репозиторій.
     QList<QLineEdit*> m_fieldInputs;///< Тимчасове сховище для вказівників на динамічно створені поля вводу.
 
     /**

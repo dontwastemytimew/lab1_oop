@@ -13,6 +13,8 @@
 #include <QLibraryInfo>
 #include <QFile>
 #include <QDebug>
+#include <QRandomGenerator>
+#include <QDate>
 
 static QTranslator *appTranslator = nullptr;
 static bool isDarkThemeActive = false;
@@ -20,23 +22,21 @@ static bool isEnglishActive = false;
 
 using nlohmann_json = nlohmann::json;
 
-SettingsDialog::SettingsDialog(DataManager* dataManager, QWidget *parent) :
+SettingsDialog::SettingsDialog(NoteRepository* repository, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsDialog),
-    m_dataManager(dataManager)
+    m_repository(repository)
 {
     ui->setupUi(this);
     setWindowTitle(tr("Налаштування"));
 
     ui->tabWidget->setCurrentIndex(0);
 
-
     ui->languageComboBox->blockSignals(true);
     ui->languageComboBox->addItem(tr("Українська"), QVariant("uk_UA"));
     ui->languageComboBox->addItem(tr("English"), QVariant("en_US"));
     ui->languageComboBox->setCurrentIndex(isEnglishActive ? 1 : 0);
     ui->languageComboBox->blockSignals(false);
-
 
     ui->themeComboBox->blockSignals(true);
     ui->themeComboBox->addItem(tr("Світла"));
@@ -61,15 +61,13 @@ SettingsDialog::SettingsDialog(DataManager* dataManager, QWidget *parent) :
 
 SettingsDialog::~SettingsDialog() {
     delete ui;
-    }
+}
 
 void SettingsDialog::on_runBenchmarkButton_clicked()
 {
     ui->runBenchmarkButton->setEnabled(false);
     ui->runBenchmarkButton->setText(tr("Тестування..."));
     ui->resultLabel->setText(tr("Генерація даних..."));
-    // Очищення системного лейбла перед новим запуском
-    ui->resultLabel->setText("");
     qApp->processEvents();
 
     const int LIBRARY_COUNT = 100000;
@@ -128,16 +126,28 @@ void SettingsDialog::on_runBenchmarkButton_clicked()
                              .arg(winner)
                              .arg(diff, 0, 'f', 2));
 
-
-    ui->resultLabel->setText(tr("Системний тест DataManager (JSON)..."));
+    ui->resultLabel->setText(tr("Системний тест I/O (JSON)..."));
     qApp->processEvents();
 
     const int SYSTEM_NOTE_COUNT = 5000;
+    QString tempFilePath = "benchmark_temp_data.json";
 
-    QPair<qint64, qint64> results = m_dataManager->runSystemBenchmark(SYSTEM_NOTE_COUNT);
+    QList<Note> originalNotes = m_repository->getNotes();
 
-    double systemSaveTime = results.first;
-    double systemLoadTime = results.second;
+    QList<Note> testNotes = generateTestNotes(SYSTEM_NOTE_COUNT);
+    m_repository->getNotes() = testNotes;
+
+    timer.restart();
+    m_repository->save(tempFilePath);
+    double systemSaveTime = timer.elapsed();
+
+    m_repository->getNotes().clear();
+    timer.restart();
+    m_repository->load(tempFilePath);
+    double systemLoadTime = timer.elapsed();
+
+    QFile::remove(tempFilePath);
+    m_repository->getNotes() = originalNotes;
 
     ui->resultLabel->setText(
         tr("Системний тест (%1 нотаток):\nЗбереження: %2 мс\nЗавантаження: %3 мс\nЗагалом: %4 мс")
@@ -149,6 +159,31 @@ void SettingsDialog::on_runBenchmarkButton_clicked()
 
     ui->runBenchmarkButton->setEnabled(true);
     ui->runBenchmarkButton->setText(tr("Запустити тест"));
+}
+
+QList<Note> SettingsDialog::generateTestNotes(int count) const {
+    int schemaId = 0;
+    if (m_repository->getSchemas().isEmpty()) {
+        schemaId = 0;
+    }
+
+    QList<Note> testNotes;
+    testNotes.reserve(count);
+
+    for (int i = 0; i < count; ++i) {
+        QString title = QString("Test Note %1").arg(i + 1);
+        Note note(title, schemaId);
+
+        note.addField("Benchmark Field", QString("Random Value %1").arg(QRandomGenerator::global()->generate()));
+
+        if (i % 10 == 0) note.addTag("benchmark");
+        if (i % 20 == 0) {
+            note.setImage("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==");
+        }
+
+        testNotes.append(note);
+    }
+    return testNotes;
 }
 
 void SettingsDialog::plotResults(double nlohmannTime, double rapidJsonTime)
@@ -243,9 +278,7 @@ void SettingsDialog::on_languageComboBox_currentIndexChanged(int index)
 void SettingsDialog::on_themeComboBox_currentIndexChanged(int index)
 {
     bool newIsDark = (index == 1);
-
     if (newIsDark == isDarkThemeActive) return;
-
     isDarkThemeActive = newIsDark;
     setDarkTheme(newIsDark);
 }
@@ -287,7 +320,6 @@ void SettingsDialog::setDarkTheme(bool enable)
     QFile file(stylePath);
 
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
-        // Fallback шлях
         stylePath = enable ? ":/styles/dark.qss" : ":/styles/light.qss";
         file.setFileName(stylePath);
         if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -295,30 +327,28 @@ void SettingsDialog::setDarkTheme(bool enable)
              return;
         }
     }
-
     QString styleSheet = QLatin1String(file.readAll());
     qApp->setStyleSheet(styleSheet);
     file.close();
 }
 
+void SettingsDialog::setupStatisticsChart()
+{
+    ui->statsPlotWidget->clearPlottables();
 
-    void SettingsDialog::setupStatisticsChart()
-    {
-        ui->statsPlotWidget->clearPlottables();
+    if (ui->statsPlotWidget->plotLayout()->elementCount() > 1) {
+        ui->statsPlotWidget->plotLayout()->removeAt(0);
+        ui->statsPlotWidget->plotLayout()->simplify();
+    }
 
-        if (ui->statsPlotWidget->plotLayout()->elementCount() > 1) {
-            ui->statsPlotWidget->plotLayout()->removeAt(0);
-            ui->statsPlotWidget->plotLayout()->simplify();
-        }
+    ui->statsPlotWidget->plotLayout()->insertRow(0);
+    QCPTextElement *title = new QCPTextElement(ui->statsPlotWidget, tr("Історія активності"), QFont("Segoe UI", 12, QFont::Bold));
+    if (isDarkThemeActive) title->setTextColor(Qt::white);
+    else title->setTextColor(Qt::black);
 
-        ui->statsPlotWidget->plotLayout()->insertRow(0);
-        QCPTextElement *title = new QCPTextElement(ui->statsPlotWidget, tr("Історія активності"), QFont("Segoe UI", 12, QFont::Bold));
-        if (isDarkThemeActive) title->setTextColor(Qt::white);
-        else title->setTextColor(Qt::black);
+    ui->statsPlotWidget->plotLayout()->addElement(0, 0, title);
 
-        ui->statsPlotWidget->plotLayout()->addElement(0, 0, title);
-
-    QMap<QString, int> stats = m_dataManager->getUsageStats();
+    QMap<QString, int> stats = m_repository->getUsageStats();
 
     QString today = QDateTime::currentDateTime().toString("yyyy-MM-dd");
     if (!stats.contains(today)) stats[today] = 0;

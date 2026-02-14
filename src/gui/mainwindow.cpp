@@ -10,11 +10,19 @@
 #include <QFileDialog>
 #include "settingsdialog.h"
 #include "statisticsdialog.h"
+#include "note_repository.h"
+#include "json_storage_strategy.h"
+#include "rapidjson_storage_strategy.h"
+#include "export_service.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // auto strategy = std::make_unique<JsonStorageStrategy>();
+    auto strategy = std::make_unique<RapidJsonStorageStrategy>();
+    m_repository = std::make_unique<NoteRepository>(std::move(strategy));
 
     ui->sortComboBox->clear();
     ui->sortComboBox->addItem(tr("Спочатку нові"));   // index 0
@@ -23,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->sortComboBox->addItem(tr("Назва (Я-А)"));     // index 3
 
     m_sessionTimer.start();
-
     setWindowTitle(tr("Редактор структурованих нотаток"));
 
     ui->notesListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -31,7 +38,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->notesListWidget, &QWidget::customContextMenuRequested, this, &MainWindow::onNotesListContextMenuRequested);
     connect(ui->notesListWidget, &QListWidget::itemDoubleClicked, this, &MainWindow::onNoteDoubleClicked);
     connect(ui->searchLineEdit, &QLineEdit::textChanged, this, &MainWindow::updateNotesList);
-    m_dataManager.loadFromFile("data.json");
+
+    if (!m_repository->load("data.json")) {
+        qWarning() << "Failed to load initial data or file does not exist. Created new structure.";
+    }
+    updateNotesList();
 }
 
 MainWindow::~MainWindow() {
@@ -41,7 +52,7 @@ MainWindow::~MainWindow() {
 void MainWindow::on_manageSchemasButton_clicked()
 {
     qInfo() << tr("Відкрито вікно 'Керування схемами'.");
-    SchemaManager schemaManagerWindow(&m_dataManager, this);
+    SchemaManager schemaManagerWindow(m_repository.get(), this);
     schemaManagerWindow.exec();
     qInfo() << tr("Вікно 'Керування схемами' закрито.");
 }
@@ -55,12 +66,12 @@ void MainWindow::updateNotesList()
     else if (index == 2) type = SortType::ByNameAZ;
     else if (index == 3) type = SortType::ByNameZA;
 
-    m_dataManager.sortNotes(type);
+    m_repository->sortNotes(type);
 
     QString searchText = ui->searchLineEdit->text();
     ui->notesListWidget->clear();
 
-    for (const auto& note : m_dataManager.getNotes()) {
+    for (const auto& note : m_repository->getNotes()) {
         if (searchText.isEmpty() || note.getTitle().contains(searchText, Qt::CaseInsensitive))
         {
             auto item = new QListWidgetItem();
@@ -73,13 +84,13 @@ void MainWindow::updateNotesList()
 }
 
 void MainWindow::on_createNoteButton_clicked() {
-    NoteEditor editor(&m_dataManager, this);
+    NoteEditor editor(m_repository.get(), this);
 
     if (editor.exec() == QDialog::Accepted)
     {
         Note newNote = editor.getNote();
         qInfo() << tr("Створено нову нотатку з назвою: %1").arg(newNote.getTitle());
-        m_dataManager.addNote(newNote);
+        m_repository->addNote(newNote);
         updateNotesList();
     } else {
         qInfo() << tr("Створення нової нотатки було скасовано користувачем.");
@@ -95,12 +106,11 @@ void MainWindow::deleteNoteLogic()
         return;
     }
     qInfo() << tr("Видалено нотатку з індексом: %1").arg(currentIndex);
-    m_dataManager.removeNote(currentIndex);
+    m_repository->removeNote(currentIndex);
     updateNotesList();
 }
 
-void MainWindow::onNotesListContextMenuRequested(const QPoint &pos)
-{
+void MainWindow::onNotesListContextMenuRequested(const QPoint &pos) {
     QListWidgetItem* item = ui->notesListWidget->itemAt(pos);
     if (!item) return;
 
@@ -119,46 +129,47 @@ void MainWindow::onNotesListContextMenuRequested(const QPoint &pos)
 
     QAction *selectedAction = contextMenu.exec(ui->notesListWidget->mapToGlobal(pos));
 
+    if (!selectedAction) return;
+
     if (selectedAction == pinAction) {
-        Note& note = m_dataManager.getNotes()[currentIndex];
+        Note& note = m_repository->getNotes()[currentIndex];
         note.setPinned(!note.isPinned());
         updateNotesList();
     }
-
-    if (selectedAction == deleteAction) {
+    else if (selectedAction == deleteAction) {
         qDebug() << tr("Користувач обрав 'Видалити нотатку' з контекстного меню.");
         deleteNoteLogic();
-    } else if (selectedAction == editTagsAction) {
+    }
+    else if (selectedAction == editTagsAction) {
         qDebug() << tr("Користувач обрав 'Редагувати теги' з контекстного меню.");
-        Note& noteToEdit = m_dataManager.getNotes()[currentIndex];
+        Note& noteToEdit = m_repository->getNotes()[currentIndex];
         TagEditor editor(noteToEdit.getTags(), this);
         if (editor.exec() == QDialog::Accepted) {
             noteToEdit.setTags(editor.getTags());
-            m_dataManager.updateNote(currentIndex, noteToEdit);
+            m_repository->updateNote(currentIndex, noteToEdit);
             updateNotesList();
         }
-    } else if (selectedAction == exportAction) {
-        qDebug() << tr("Користувач обрав 'Експортувати' з контекстного меню.");
-        QString defaultFileName = m_dataManager.getNotes()[currentIndex].getTitle();
+    }
+    else if (selectedAction == exportAction) {
+        QString defaultFileName = m_repository->getNotes()[currentIndex].getTitle();
         QString fileName = QFileDialog::getSaveFileName(this,
             tr("Експортувати нотатку"),
             defaultFileName + ".json",
             tr("JSON Files (*.json)"));
 
         if (!fileName.isEmpty()) {
-            m_dataManager.exportNote(currentIndex, fileName);
+            ExportService::exportToJson(m_repository->getNotes()[currentIndex], fileName);
         }
     }
     else if (selectedAction == exportPdfAction) {
-        QString defaultFileName = m_dataManager.getNotes()[currentIndex].getTitle();
-
+        QString defaultFileName = m_repository->getNotes()[currentIndex].getTitle();
         QString fileName = QFileDialog::getSaveFileName(this,
             tr("Зберегти як PDF"),
             defaultFileName + ".pdf",
             tr("PDF Files (*.pdf)"));
 
         if (!fileName.isEmpty()) {
-            m_dataManager.exportNoteToPdf(currentIndex, fileName);
+            ExportService::exportToPdf(m_repository->getNotes()[currentIndex], fileName);
         }
     }
 }
@@ -168,16 +179,16 @@ void MainWindow::onNoteDoubleClicked(QListWidgetItem *item)
     int currentIndex = ui->notesListWidget->row(item);
     if (currentIndex < 0) return;
 
-    const Note& noteToEdit = m_dataManager.getNotes()[currentIndex];
+    const Note& noteToEdit = m_repository->getNotes()[currentIndex];
     qInfo() << tr("Відкрито редактор для нотатки: %1").arg(noteToEdit.getTitle());
 
-    NoteEditor editor(&m_dataManager, noteToEdit, this);
+    NoteEditor editor(m_repository.get(), noteToEdit, this);
 
     if (editor.exec() == QDialog::Accepted)
     {
         qInfo() << tr("Зміни до нотатки '%1' збережено.").arg(noteToEdit.getTitle());
         Note updatedNote = editor.getNote();
-        m_dataManager.updateNote(currentIndex, updatedNote);
+        m_repository->updateNote(currentIndex, updatedNote);
         updateNotesList();
     }
 }
@@ -201,13 +212,20 @@ void MainWindow::on_importNoteButton_clicked()
         tr("JSON Files (*.json)"));
 
     if (!fileName.isEmpty()) {
-        m_dataManager.importNote(fileName);
-        updateNotesList();
+        auto importedNote = ExportService::importFromJson(fileName);
+
+        if (importedNote.has_value()) {
+            m_repository->addNote(importedNote.value());
+            updateNotesList();
+            qInfo() << tr("Нотатку успішно імпортовано.");
+        } else {
+            qCritical() << tr("Помилка імпорту файлу.");
+        }
     }
 }
 
 void MainWindow::on_settingsButton_clicked() {
-    SettingsDialog dialog(&m_dataManager, this);
+    SettingsDialog dialog(m_repository.get(), this);
     dialog.exec();
 }
 
@@ -216,7 +234,6 @@ void MainWindow::changeEvent(QEvent *event)
 {
     if (event->type() == QEvent::LanguageChange) {
         ui->retranslateUi(this);
-
         setWindowTitle(tr("Редактор структурованих нотаток"));
     }
     QMainWindow::changeEvent(event);
@@ -224,11 +241,11 @@ void MainWindow::changeEvent(QEvent *event)
 
 void MainWindow::closeEvent(QCloseEvent *event) {
     qint64 sessionSeconds = m_sessionTimer.elapsed() / 1000;
-    m_dataManager.addUsageTime(sessionSeconds);
+    m_repository->addUsageTime(sessionSeconds);
 
     qInfo() << "Сесія тривала" << sessionSeconds << "секунд.";
 
-    m_dataManager.saveToFile("data.json");
+    m_repository->save("data.json");
     QMainWindow::closeEvent(event);
 }
 
