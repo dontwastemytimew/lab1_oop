@@ -1,8 +1,5 @@
 var hierarchy =
 [
-    [ "BenchmarkJson", "classBenchmarkJson.html", null ],
-    [ "BenchmarkRepository", "classBenchmarkRepository.html", null ],
-    [ "BenchmarkSorting", "classBenchmarkSorting.html", null ],
     [ "ExportService", "classExportService.html", null ],
     [ "Field", "structField.html", null ],
     [ "IStorageStrategy", "classIStorageStrategy.html", [

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['qt_0',['Лабораторна робота №3: Менеджер Нотаток (C++ / Qt)',['../index.html',1,'']]]
+  ['rapidjsonstoragestrategy_0',['RapidJsonStorageStrategy',['../classRapidJsonStorageStrategy.html',1,'']]]
 ];

@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['getcreationdate_0',['getCreationDate',['../classNote.html#a3398329627e2b778468d34d08d81a2f7',1,'Note']]],
-  ['getfields_1',['getfields',['../classNote.html#a9c181e29a20ab565dd75e3e350c9552f',1,'Note::getFields()'],['../classSchema.html#a865ec903840e4df78c9b14c6f926d1e7',1,'Schema::getFields()']]],
-  ['getimage_2',['getImage',['../classNote.html#a20069b369d9ba36cba04c857342c9b1f',1,'Note']]],
-  ['getname_3',['getName',['../classSchema.html#a139a8207980d99765e1815e59c3af49e',1,'Schema']]],
-  ['getnote_4',['getNote',['../classNoteEditor.html#a8e188cc003725fbf4a76d1d2da029ed6',1,'NoteEditor']]],
-  ['getnotescountbycategory_5',['getNotesCountByCategory',['../classStatisticsService.html#acf23a8ee4adb8d5ec66d10d20379a033',1,'StatisticsService']]],
-  ['getschema_6',['getSchema',['../classSchemaEditor.html#a02d08e074198654d8f9c687a752fc861',1,'SchemaEditor']]],
-  ['getschemaid_7',['getSchemaId',['../classNote.html#a099dfbf82a96075153e5dae1ff3b87ad',1,'Note']]],
-  ['gettags_8',['gettags',['../classNote.html#af6063084506534ac43a44c9a0f840f09',1,'Note::getTags()'],['../classTagEditor.html#ac8d421bccc93ee2846d1de06197985d1',1,'TagEditor::getTags()']]],
-  ['gettitle_9',['getTitle',['../classNote.html#a86dc48a4f59045279e292513b39f3709',1,'Note']]],
-  ['getuseractivity_10',['getUserActivity',['../classStatisticsService.html#adaffed3f26e782ad92489d4779c73032',1,'StatisticsService']]]
+  ['i_20o_0',['1. Бенчмаркінг JSON I/O',['../index.html#autotoc_md9',1,'']]],
+  ['i18n_20та_20логування_1',['3. Документація, i18n та Логування',['../index.html#autotoc_md11',1,'']]],
+  ['importfromjson_2',['importFromJson',['../classExportService.html#a531f4a0199603e5b8e364d098b862c72',1,'ExportService']]],
+  ['init_3',['init',['../classLogger.html#ad9f38f9cc2d75a6207f4972427aa74f1',1,'Logger']]],
+  ['ispinned_4',['isPinned',['../classNote.html#aaa859f757e3960742d0dc36feadeb9df',1,'Note']]],
+  ['istoragestrategy_5',['IStorageStrategy',['../classIStorageStrategy.html',1,'']]]
 ];

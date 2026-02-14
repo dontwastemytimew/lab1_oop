@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['field_0',['Field',['../structField.html',1,'']]]
+  ['istoragestrategy_0',['IStorageStrategy',['../classIStorageStrategy.html',1,'']]]
 ];

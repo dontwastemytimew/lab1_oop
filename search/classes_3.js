@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['istoragestrategy_0',['IStorageStrategy',['../classIStorageStrategy.html',1,'']]]
+  ['jsonstoragestrategy_0',['JsonStorageStrategy',['../classJsonStorageStrategy.html',1,'']]]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['c_20qt_0',['Лабораторна робота №3: Менеджер Нотаток (C++ / Qt)',['../index.html',1,'']]],
-  ['changeevent_1',['changeevent',['../classMainWindow.html#a416ae2140ac1aa9f03a6279316abdcad',1,'MainWindow::changeEvent()'],['../classNoteEditor.html#a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf',1,'NoteEditor::changeEvent()'],['../classSchemaEditor.html#a088d88a44af4028f1b771fade55c7be5',1,'SchemaEditor::changeEvent()'],['../classSchemaManager.html#a4db43f68ff4704e358796e7d550489e0',1,'SchemaManager::changeEvent()'],['../classTagEditor.html#a284787d90a3272758b4f4bdae4b5bb99',1,'TagEditor::changeEvent()']]],
-  ['closeevent_2',['closeEvent',['../classMainWindow.html#a05fb9d72c044aa3bb7d187b994704e2f',1,'MainWindow']]]
+  ['exportservice_0',['ExportService',['../classExportService.html',1,'']]],
+  ['exporttojson_1',['exportToJson',['../classExportService.html#afe19373ee2997cef00ef30d1bc507e0c',1,'ExportService']]],
+  ['exporttopdf_2',['exportToPdf',['../classExportService.html#a0cb9f07757221a2990f5f9b7f2f1d7ee',1,'ExportService']]]
 ];

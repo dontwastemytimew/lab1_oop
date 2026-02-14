@@ -1,8 +1,5 @@
 var annotated_dup =
 [
-    [ "BenchmarkJson", "classBenchmarkJson.html", null ],
-    [ "BenchmarkRepository", "classBenchmarkRepository.html", null ],
-    [ "BenchmarkSorting", "classBenchmarkSorting.html", null ],
     [ "ExportService", "classExportService.html", null ],
     [ "Field", "structField.html", "structField" ],
     [ "IStorageStrategy", "classIStorageStrategy.html", "classIStorageStrategy" ],

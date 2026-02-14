@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jsonstoragestrategy_0',['JsonStorageStrategy',['../classJsonStorageStrategy.html',1,'']]]
+  ['logger_0',['Logger',['../classLogger.html',1,'']]]
 ];
