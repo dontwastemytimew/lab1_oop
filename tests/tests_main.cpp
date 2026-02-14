@@ -1,8 +1,8 @@
 #include "test_models.h"
-#include "test_datamanager.h"
+#include "test_repository.h"
 #include "test_io.h"
 #include <iostream>
-#include <QCoreApplication>
+#include <QApplication>
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     std::cout << "========================================\n\n";
 
     TestModels::runTests();
-    TestDataManager::runTests();
+    TestRepository::runTests();
     TestIO::runTests();
 
     std::cout << "\n========================================\n";

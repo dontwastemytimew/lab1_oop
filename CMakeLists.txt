@@ -56,7 +56,7 @@ target_precompile_headers(lab3 PRIVATE ${PCH_HEADERS} "libs/qcustomplot.h")
 add_executable(lab3_tests
         tests/tests_main.cpp
         tests/test_models.h
-        tests/test_datamanager.h
+        tests/test_repository.h
         tests/test_io.h
         ${CORE_SOURCES}
 )
