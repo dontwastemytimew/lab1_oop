@@ -104,14 +104,14 @@ $(document).ready(function(){initNavTree('classExportService.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afe19373ee2997cef00ef30d1bc507e0c" id="r_afe19373ee2997cef00ef30d1bc507e0c"><td class="memItemLeft" align="right" valign="top"><a id="afe19373ee2997cef00ef30d1bc507e0c" name="afe19373ee2997cef00ef30d1bc507e0c"></a>
-<a class="el" href="classWriter.html">static</a> <a class="el" href="classWriter.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exportToJson</b> (const <a class="el" href="classNote.html">Note</a> &amp;<a class="el" href="classWriter.html">note</a>, const <a class="el" href="classWriter.html">QString</a> &amp;<a class="el" href="classWriter.html">filePath</a>)</td></tr>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exportToJson</b> (const <a class="el" href="classNote.html">Note</a> &amp;note, const QString &amp;filePath)</td></tr>
 <tr class="memdesc:afe19373ee2997cef00ef30d1bc507e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Експортує нотатку в JSON файл. <br /></td></tr>
 <tr class="separator:afe19373ee2997cef00ef30d1bc507e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cb9f07757221a2990f5f9b7f2f1d7ee" id="r_a0cb9f07757221a2990f5f9b7f2f1d7ee"><td class="memItemLeft" align="right" valign="top"><a id="a0cb9f07757221a2990f5f9b7f2f1d7ee" name="a0cb9f07757221a2990f5f9b7f2f1d7ee"></a>
-<a class="el" href="classWriter.html">static</a> <a class="el" href="classWriter.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>exportToPdf</b> (const <a class="el" href="classNote.html">Note</a> &amp;<a class="el" href="classWriter.html">note</a>, const <a class="el" href="classWriter.html">QString</a> &amp;<a class="el" href="classWriter.html">filePath</a>)</td></tr>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>exportToPdf</b> (const <a class="el" href="classNote.html">Note</a> &amp;note, const QString &amp;filePath)</td></tr>
 <tr class="memdesc:a0cb9f07757221a2990f5f9b7f2f1d7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Експортує нотатку в PDF документ з форматуванням. <br /></td></tr>
 <tr class="separator:a0cb9f07757221a2990f5f9b7f2f1d7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a531f4a0199603e5b8e364d098b862c72" id="r_a531f4a0199603e5b8e364d098b862c72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWriter.html">static</a> std::optional&lt; <a class="el" href="classNote.html">Note</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExportService.html#a531f4a0199603e5b8e364d098b862c72">importFromJson</a> (const <a class="el" href="classWriter.html">QString</a> &amp;<a class="el" href="classWriter.html">filePath</a>)</td></tr>
+<tr class="memitem:a531f4a0199603e5b8e364d098b862c72" id="r_a531f4a0199603e5b8e364d098b862c72"><td class="memItemLeft" align="right" valign="top">static std::optional&lt; <a class="el" href="classNote.html">Note</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExportService.html#a531f4a0199603e5b8e364d098b862c72">importFromJson</a> (const QString &amp;filePath)</td></tr>
 <tr class="memdesc:a531f4a0199603e5b8e364d098b862c72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Імпортує нотатку з JSON файлу.  <br /></td></tr>
 <tr class="separator:a531f4a0199603e5b8e364d098b862c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -133,7 +133,7 @@ Static Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">std::optional&lt; <a class="el" href="classNote.html">Note</a> &gt; ExportService::importFromJson </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QString</a> &amp;&#160;</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
           <td class="paramname"><em>filePath</em></td><td>)</td>
           <td></td>
         </tr>

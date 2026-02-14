@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['yaxis_0',['yAxis',['../classQCustomPlot.html#af6fea5679725b152c14facd920b19367',1,'QCustomPlot']]],
-  ['yaxis2_1',['yAxis2',['../classQCustomPlot.html#af13fdc5bce7d0fabd640f13ba805c0b7',1,'QCustomPlot']]]
+  ['лабораторна_20робота_20№3_3a_20менеджер_20нотаток_20c_20qt_0',['Лабораторна робота №3: Менеджер Нотаток (C++ / Qt)',['../index.html',1,'']]],
+  ['лабораторної_20роботи_20№3_20ооп_1',['Вимоги Лабораторної Роботи №3 (ООП)',['../index.html#autotoc_md2',1,'']]],
+  ['логування_2',['3. Документація, i18n та Логування',['../index.html#autotoc_md11',1,'']]]
 ];

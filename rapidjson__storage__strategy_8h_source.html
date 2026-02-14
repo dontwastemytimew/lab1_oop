@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('rapidjson__storage__strategy_8h_source
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;istorage_strategy.h&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="document_8h.html">rapidjson/document.h</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;rapidjson/document.h&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;rapidjson/writer.h&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;rapidjson/stringbuffer.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;rapidjson/prettywriter.h&quot;</span></div>
@@ -112,94 +112,94 @@ $(document).ready(function(){initNavTree('rapidjson__storage__strategy_8h_source
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classRapidJsonStorageStrategy.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classRapidJsonStorageStrategy.html">RapidJsonStorageStrategy</a> : <span class="keyword">public</span> <a class="code hl_interface" href="classIStorageStrategy.html">IStorageStrategy</a> {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
 <div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classRapidJsonStorageStrategy.html#aef5737dfeebb070752dc7c4eb8fd38f5">   14</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classRapidJsonStorageStrategy.html#aef5737dfeebb070752dc7c4eb8fd38f5">save</a>(<span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QString</a>&amp; <a class="code hl_class" href="classWriter.html">filePath</a>,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>              <span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QList&lt;Note&gt;</a>&amp; <a class="code hl_class" href="classWriter.html">notes</a>,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>              <span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QList&lt;Schema&gt;</a>&amp; schemas,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>              <span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QMap&lt;QString, int&gt;</a>&amp; <a class="code hl_class" href="classWriter.html">stats</a>)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classRapidJsonStorageStrategy.html#aef5737dfeebb070752dc7c4eb8fd38f5">   14</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classRapidJsonStorageStrategy.html#aef5737dfeebb070752dc7c4eb8fd38f5">save</a>(<span class="keyword">const</span> QString&amp; filePath,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>              <span class="keyword">const</span> QList&lt;Note&gt;&amp; notes,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>              <span class="keyword">const</span> QList&lt;Schema&gt;&amp; schemas,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>              <span class="keyword">const</span> QMap&lt;QString, int&gt;&amp; stats)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">    </span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacerapidjson.html">rapidjson</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_class" href="classWriter.html">StringBuffer</a> <a class="code hl_class" href="classWriter.html">sb</a>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="classWriter.html">PrettyWriter&lt;StringBuffer&gt;</a> <a class="code hl_class" href="classWriter.html">writer</a>(<a class="code hl_class" href="classWriter.html">sb</a>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">using namespace </span>rapidjson;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        StringBuffer sb;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        PrettyWriter&lt;StringBuffer&gt; writer(sb);</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        writer.StartObject();</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;schemas&quot;</span>);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_class" href="classWriter.html">writer</a>.StartArray();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        writer.Key(<span class="stringliteral">&quot;schemas&quot;</span>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        writer.StartArray();</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; schema : schemas) {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;name&quot;</span>);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <a class="code hl_class" href="classWriter.html">writer</a>.String(schema.getName().toStdString().c_str());</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            writer.StartObject();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            writer.Key(<span class="stringliteral">&quot;name&quot;</span>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            writer.String(schema.getName().toStdString().c_str());</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;fields&quot;</span>);</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <a class="code hl_class" href="classWriter.html">writer</a>.StartArray();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code hl_class" href="classWriter.html">field</a> : schema.getFields()) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;name&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">field</a>.name.toStdString().c_str());</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;type&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">field</a>.type.toStdString().c_str());</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            writer.Key(<span class="stringliteral">&quot;fields&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            writer.StartArray();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; field : schema.getFields()) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                writer.StartObject();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                writer.Key(<span class="stringliteral">&quot;name&quot;</span>); writer.String(field.name.toStdString().c_str());</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                writer.Key(<span class="stringliteral">&quot;type&quot;</span>); writer.String(field.type.toStdString().c_str());</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                writer.EndObject();</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <a class="code hl_class" href="classWriter.html">writer</a>.EndArray();</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            writer.EndArray();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            writer.EndObject();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_class" href="classWriter.html">writer</a>.EndArray();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        writer.EndArray();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;notes&quot;</span>);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_class" href="classWriter.html">writer</a>.StartArray();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code hl_class" href="classWriter.html">note</a> : <a class="code hl_class" href="classWriter.html">notes</a>) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;title&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">note</a>.getTitle().toStdString().c_str());</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;schemaId&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.Int(<a class="code hl_class" href="classWriter.html">note</a>.getSchemaId());</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        writer.Key(<span class="stringliteral">&quot;notes&quot;</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        writer.StartArray();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; note : notes) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            writer.StartObject();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            writer.Key(<span class="stringliteral">&quot;title&quot;</span>); writer.String(note.getTitle().toStdString().c_str());</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            writer.Key(<span class="stringliteral">&quot;schemaId&quot;</span>); writer.Int(note.getSchemaId());</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;fields&quot;</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">auto</span> <a class="code hl_class" href="classWriter.html">fields</a> = <a class="code hl_class" href="classWriter.html">note</a>.getFields();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <a class="code hl_class" href="classWriter.html">it</a> = <a class="code hl_class" href="classWriter.html">fields</a>.begin(); <a class="code hl_class" href="classWriter.html">it</a> != <a class="code hl_class" href="classWriter.html">fields</a>.end(); ++<a class="code hl_class" href="classWriter.html">it</a>) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                <a class="code hl_class" href="classWriter.html">writer</a>.Key(<a class="code hl_class" href="classWriter.html">it</a>.key().toStdString().c_str());</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">it</a>.value().toStdString().c_str());</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            writer.Key(<span class="stringliteral">&quot;fields&quot;</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            writer.StartObject();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">auto</span> fields = note.getFields();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = fields.begin(); it != fields.end(); ++it) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                writer.Key(it.key().toStdString().c_str());</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                writer.String(it.value().toStdString().c_str());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            writer.EndObject();</div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;tags&quot;</span>);</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            <a class="code hl_class" href="classWriter.html">writer</a>.StartArray();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; <a class="code hl_class" href="classWriter.html">tag</a> : <a class="code hl_class" href="classWriter.html">note</a>.getTags()) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">tag</a>.toStdString().c_str());</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            writer.Key(<span class="stringliteral">&quot;tags&quot;</span>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            writer.StartArray();</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; tag : note.getTags()) {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                writer.String(tag.toStdString().c_str());</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <a class="code hl_class" href="classWriter.html">writer</a>.EndArray();</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            writer.EndArray();</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;image&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.String(<a class="code hl_class" href="classWriter.html">note</a>.getImage().toStdString().c_str());</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;pinned&quot;</span>); <a class="code hl_class" href="classWriter.html">writer</a>.Bool(<a class="code hl_class" href="classWriter.html">note</a>.isPinned());</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            writer.Key(<span class="stringliteral">&quot;image&quot;</span>); writer.String(note.getImage().toStdString().c_str());</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            writer.Key(<span class="stringliteral">&quot;pinned&quot;</span>); writer.Bool(note.isPinned());</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            writer.EndObject();</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_class" href="classWriter.html">writer</a>.EndArray();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        writer.EndArray();</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="classWriter.html">writer</a>.Key(<span class="stringliteral">&quot;stats&quot;</span>);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_class" href="classWriter.html">writer</a>.StartObject();</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span> <a class="code hl_class" href="classWriter.html">it</a> = <a class="code hl_class" href="classWriter.html">stats</a>.begin(); <a class="code hl_class" href="classWriter.html">it</a> != <a class="code hl_class" href="classWriter.html">stats</a>.end(); ++<a class="code hl_class" href="classWriter.html">it</a>) {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Key(<a class="code hl_class" href="classWriter.html">it</a>.key().toStdString().c_str());</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <a class="code hl_class" href="classWriter.html">writer</a>.Int(<a class="code hl_class" href="classWriter.html">it</a>.value());</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        writer.Key(<span class="stringliteral">&quot;stats&quot;</span>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        writer.StartObject();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">for</span>(<span class="keyword">auto</span> it = stats.begin(); it != stats.end(); ++it) {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            writer.Key(it.key().toStdString().c_str());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            writer.Int(it.value());</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        writer.EndObject();</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_class" href="classWriter.html">writer</a>.EndObject();</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        writer.EndObject();</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::ofstream <a class="code hl_class" href="classWriter.html">file</a>(<a class="code hl_class" href="classWriter.html">filePath</a>.toStdString());</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">if</span> (!<a class="code hl_class" href="classWriter.html">file</a>.is_open()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::ofstream file(filePath.toStdString());</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keywordflow">if</span> (!file.is_open()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_class" href="classWriter.html">file</a> &lt;&lt; <a class="code hl_class" href="classWriter.html">sb</a>.GetString();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_class" href="classWriter.html">qInfo</a>() &lt;&lt; <span class="stringliteral">&quot;Saved via RapidJSON Strategy&quot;</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        file &lt;&lt; sb.GetString();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        qInfo() &lt;&lt; <span class="stringliteral">&quot;Saved via RapidJSON Strategy&quot;</span>;</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
 </div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classRapidJsonStorageStrategy.html#ae1b3ec791e732b75c6fa7c9d0473425e">   93</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classRapidJsonStorageStrategy.html#ae1b3ec791e732b75c6fa7c9d0473425e">load</a>(<span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QString</a>&amp; <a class="code hl_class" href="classWriter.html">filePath</a>,</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>              <a class="code hl_class" href="classWriter.html">QList&lt;Note&gt;</a>&amp; <a class="code hl_class" href="classWriter.html">notes</a>,</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>              <a class="code hl_class" href="classWriter.html">QList&lt;Schema&gt;</a>&amp; schemas,</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>              <a class="code hl_class" href="classWriter.html">QMap&lt;QString, int&gt;</a>&amp; <a class="code hl_class" href="classWriter.html">stats</a>)<span class="keyword"> override</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classRapidJsonStorageStrategy.html#ae1b3ec791e732b75c6fa7c9d0473425e">   93</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classRapidJsonStorageStrategy.html#ae1b3ec791e732b75c6fa7c9d0473425e">load</a>(<span class="keyword">const</span> QString&amp; filePath,</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>              QList&lt;Note&gt;&amp; notes,</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>              QList&lt;Schema&gt;&amp; schemas,</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>              QMap&lt;QString, int&gt;&amp; stats)<span class="keyword"> override</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">    </span>{</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_class" href="classWriter.html">qWarning</a>() &lt;&lt; <span class="stringliteral">&quot;RapidJSON load not implemented for full structure yet.&quot;</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        qWarning() &lt;&lt; <span class="stringliteral">&quot;RapidJSON load not implemented for full structure yet.&quot;</span>;</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
 </div>
@@ -209,9 +209,6 @@ $(document).ready(function(){initNavTree('rapidjson__storage__strategy_8h_source
 <div class="ttc" id="aclassRapidJsonStorageStrategy_html"><div class="ttname"><a href="classRapidJsonStorageStrategy.html">RapidJsonStorageStrategy</a></div><div class="ttdef"><b>Definition</b> rapidjson_storage_strategy.h:12</div></div>
 <div class="ttc" id="aclassRapidJsonStorageStrategy_html_ae1b3ec791e732b75c6fa7c9d0473425e"><div class="ttname"><a href="classRapidJsonStorageStrategy.html#ae1b3ec791e732b75c6fa7c9d0473425e">RapidJsonStorageStrategy::load</a></div><div class="ttdeci">bool load(const QString &amp;filePath, QList&lt; Note &gt; &amp;notes, QList&lt; Schema &gt; &amp;schemas, QMap&lt; QString, int &gt; &amp;stats) override</div><div class="ttdoc">Завантажує дані з файлу.</div><div class="ttdef"><b>Definition</b> rapidjson_storage_strategy.h:93</div></div>
 <div class="ttc" id="aclassRapidJsonStorageStrategy_html_aef5737dfeebb070752dc7c4eb8fd38f5"><div class="ttname"><a href="classRapidJsonStorageStrategy.html#aef5737dfeebb070752dc7c4eb8fd38f5">RapidJsonStorageStrategy::save</a></div><div class="ttdeci">bool save(const QString &amp;filePath, const QList&lt; Note &gt; &amp;notes, const QList&lt; Schema &gt; &amp;schemas, const QMap&lt; QString, int &gt; &amp;stats) override</div><div class="ttdoc">Зберігає дані у вказаний файл.</div><div class="ttdef"><b>Definition</b> rapidjson_storage_strategy.h:14</div></div>
-<div class="ttc" id="aclassWriter_html"><div class="ttname"><a href="classWriter.html">Writer</a></div><div class="ttdoc">JSON writer.</div><div class="ttdef"><b>Definition</b> writer.h:91</div></div>
-<div class="ttc" id="adocument_8h_html"><div class="ttname"><a href="document_8h.html">document.h</a></div></div>
-<div class="ttc" id="anamespacerapidjson_html"><div class="ttname"><a href="namespacerapidjson.html">rapidjson</a></div><div class="ttdoc">main RapidJSON namespace</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

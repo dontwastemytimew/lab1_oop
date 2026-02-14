@@ -117,35 +117,35 @@ $(document).ready(function(){initNavTree('note__repository_8h_source.html',''); 
 <div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classNoteRepository.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classNoteRepository.html">NoteRepository</a> {</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classNoteRepository.html">NoteRepository</a>(std::unique_ptr&lt;IStorageStrategy&gt; <a class="code hl_class" href="classWriter.html">strategy</a>);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classNoteRepository.html">NoteRepository</a>(std::unique_ptr&lt;IStorageStrategy&gt; strategy);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Робота зі схемами</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> addSchema(<span class="keyword">const</span> <a class="code hl_class" href="classSchema.html">Schema</a>&amp; schema);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QList&lt;Schema&gt;</a>&amp; getSchemas() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">const</span> QList&lt;Schema&gt;&amp; getSchemas() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> removeSchema(<span class="keywordtype">int</span> index);</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> updateSchema(<span class="keywordtype">int</span> index, <span class="keyword">const</span> <a class="code hl_class" href="classSchema.html">Schema</a>&amp; schema);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Робота з нотатками</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> addNote(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; <a class="code hl_class" href="classWriter.html">note</a>);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_class" href="classWriter.html">QList&lt;Note&gt;</a>&amp; getNotes();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> addNote(<span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; note);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    QList&lt;Note&gt;&amp; getNotes();</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> removeNote(<span class="keywordtype">int</span> index);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> updateNote(<span class="keywordtype">int</span> index, <span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; <a class="code hl_class" href="classWriter.html">note</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> updateNote(<span class="keywordtype">int</span> index, <span class="keyword">const</span> <a class="code hl_class" href="classNote.html">Note</a>&amp; note);</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> sortNotes(SortType type);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// Статистика</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> addUsageTime(<span class="keywordtype">int</span> <a class="code hl_class" href="classWriter.html">seconds</a>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_class" href="classWriter.html">QMap&lt;QString, int&gt;</a> getUsageStats() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">void</span> addUsageTime(<span class="keywordtype">int</span> seconds);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    QMap&lt;QString, int&gt; getUsageStats() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Збереження/Завантаження</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> save(<span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QString</a>&amp; <a class="code hl_class" href="classWriter.html">filePath</a>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> load(<span class="keyword">const</span> <a class="code hl_class" href="classWriter.html">QString</a>&amp; <a class="code hl_class" href="classWriter.html">filePath</a>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> save(<span class="keyword">const</span> QString&amp; filePath);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">bool</span> load(<span class="keyword">const</span> QString&amp; filePath);</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNoteRepository.html#ab3eee10272c3fc70a261710e81d1c3d7">setStrategy</a>(std::unique_ptr&lt;IStorageStrategy&gt; <a class="code hl_class" href="classWriter.html">newStrategy</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classNoteRepository.html#ab3eee10272c3fc70a261710e81d1c3d7">setStrategy</a>(std::unique_ptr&lt;IStorageStrategy&gt; newStrategy);</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_class" href="classWriter.html">QList&lt;Schema&gt;</a> m_schemas;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <a class="code hl_class" href="classWriter.html">QList&lt;Note&gt;</a> m_notes;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <a class="code hl_class" href="classWriter.html">QMap&lt;QString, int&gt;</a> m_usageStats;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    QList&lt;Schema&gt; m_schemas;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    QList&lt;Note&gt; m_notes;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    QMap&lt;QString, int&gt; m_usageStats;</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::unique_ptr&lt;IStorageStrategy&gt; m_strategy;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
 </div>
@@ -153,7 +153,6 @@ $(document).ready(function(){initNavTree('note__repository_8h_source.html',''); 
 <div class="ttc" id="aclassNoteRepository_html_ab3eee10272c3fc70a261710e81d1c3d7"><div class="ttname"><a href="classNoteRepository.html#ab3eee10272c3fc70a261710e81d1c3d7">NoteRepository::setStrategy</a></div><div class="ttdeci">void setStrategy(std::unique_ptr&lt; IStorageStrategy &gt; newStrategy)</div><div class="ttdoc">Змінює стратегію збереження &quot;на льоту&quot;.</div><div class="ttdef"><b>Definition</b> note_repository.cpp:112</div></div>
 <div class="ttc" id="aclassNote_html"><div class="ttname"><a href="classNote.html">Note</a></div><div class="ttdoc">Модель даних для однієї нотатки.</div><div class="ttdef"><b>Definition</b> note.h:19</div></div>
 <div class="ttc" id="aclassSchema_html"><div class="ttname"><a href="classSchema.html">Schema</a></div><div class="ttdoc">Модель даних для шаблону (схеми) нотатки.</div><div class="ttdef"><b>Definition</b> schema.h:28</div></div>
-<div class="ttc" id="aclassWriter_html"><div class="ttname"><a href="classWriter.html">Writer</a></div><div class="ttdoc">JSON writer.</div><div class="ttdef"><b>Definition</b> writer.h:91</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

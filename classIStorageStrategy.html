@@ -113,10 +113,10 @@ Inheritance diagram for IStorageStrategy:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad434718183f2829824830db4012c4f05" id="r_ad434718183f2829824830db4012c4f05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWriter.html">virtual</a> <a class="el" href="classWriter.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIStorageStrategy.html#ad434718183f2829824830db4012c4f05">save</a> (const <a class="el" href="classWriter.html">QString</a> &amp;<a class="el" href="classWriter.html">filePath</a>, const <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;<a class="el" href="classWriter.html">notes</a>, const <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;schemas, const <a class="el" href="classWriter.html">QMap</a>&lt; <a class="el" href="classWriter.html">QString</a>, <a class="el" href="classWriter.html">int</a> &gt; &amp;<a class="el" href="classWriter.html">stats</a>)=0</td></tr>
+<tr class="memitem:ad434718183f2829824830db4012c4f05" id="r_ad434718183f2829824830db4012c4f05"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIStorageStrategy.html#ad434718183f2829824830db4012c4f05">save</a> (const QString &amp;filePath, const QList&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;notes, const QList&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;schemas, const QMap&lt; QString, int &gt; &amp;stats)=0</td></tr>
 <tr class="memdesc:ad434718183f2829824830db4012c4f05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Зберігає дані у вказаний файл.  <br /></td></tr>
 <tr class="separator:ad434718183f2829824830db4012c4f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29e76e9732fb5c0e15a605d3fbb57340" id="r_a29e76e9732fb5c0e15a605d3fbb57340"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWriter.html">virtual</a> <a class="el" href="classWriter.html">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIStorageStrategy.html#a29e76e9732fb5c0e15a605d3fbb57340">load</a> (const <a class="el" href="classWriter.html">QString</a> &amp;<a class="el" href="classWriter.html">filePath</a>, <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;<a class="el" href="classWriter.html">notes</a>, <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;schemas, <a class="el" href="classWriter.html">QMap</a>&lt; <a class="el" href="classWriter.html">QString</a>, <a class="el" href="classWriter.html">int</a> &gt; &amp;<a class="el" href="classWriter.html">stats</a>)=0</td></tr>
+<tr class="memitem:a29e76e9732fb5c0e15a605d3fbb57340" id="r_a29e76e9732fb5c0e15a605d3fbb57340"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIStorageStrategy.html#a29e76e9732fb5c0e15a605d3fbb57340">load</a> (const QString &amp;filePath, QList&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;notes, QList&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;schemas, QMap&lt; QString, int &gt; &amp;stats)=0</td></tr>
 <tr class="memdesc:a29e76e9732fb5c0e15a605d3fbb57340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Завантажує дані з файлу.  <br /></td></tr>
 <tr class="separator:a29e76e9732fb5c0e15a605d3fbb57340"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -134,27 +134,27 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classWriter.html">virtual</a> <a class="el" href="classWriter.html">bool</a> IStorageStrategy::load </td>
+          <td class="memname">virtual bool IStorageStrategy::load </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QString</a> &amp;&#160;</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
           <td class="paramname"><em>filePath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">QList&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>notes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">QList&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>schemas</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classWriter.html">QMap</a>&lt; <a class="el" href="classWriter.html">QString</a>, <a class="el" href="classWriter.html">int</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">QMap&lt; QString, int &gt; &amp;&#160;</td>
           <td class="paramname"><em>stats</em>&#160;</td>
         </tr>
         <tr>
@@ -196,27 +196,27 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classWriter.html">virtual</a> <a class="el" href="classWriter.html">bool</a> IStorageStrategy::save </td>
+          <td class="memname">virtual bool IStorageStrategy::save </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QString</a> &amp;&#160;</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
           <td class="paramname"><em>filePath</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const QList&lt; <a class="el" href="classNote.html">Note</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>notes</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QList</a>&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const QList&lt; <a class="el" href="classSchema.html">Schema</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>schemas</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classWriter.html">QMap</a>&lt; <a class="el" href="classWriter.html">QString</a>, <a class="el" href="classWriter.html">int</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const QMap&lt; QString, int &gt; &amp;&#160;</td>
           <td class="paramname"><em>stats</em>&#160;</td>
         </tr>
         <tr>

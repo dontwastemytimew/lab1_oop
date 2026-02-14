@@ -1,28 +1,5 @@
 var searchData=
 [
-  ['u_0',['u',['../unioninternal_1_1Hasher_1_1Number_1_1U.html',1,'internal::Hasher&lt; Encoding, Allocator &gt;::Number::U'],['../structGenericValue_1_1Number_1_1U.html',1,'GenericValue&lt; Encoding, Allocator &gt;::Number::U']]],
-  ['undefinepen_1',['undefinePen',['../classQCPScatterStyle.html#acabc2a8c83d650b946f50c3166b6c35e',1,'QCPScatterStyle']]],
-  ['under_20or_20between_20graphs_2',['Filling under or between graphs',['../classQCPGraph.html#filling',1,'']]],
-  ['uniform01_3',['uniform01',['../classankerl_1_1nanobench_1_1Rng.html#ac70a7784c044c9870682eb22094049fb',1,'ankerl::nanobench::Rng']]],
-  ['unit_4',['unit',['../classankerl_1_1nanobench_1_1Bench.html#a7ac122273f2f626b8e95a9b8cb2544c6',1,'ankerl::nanobench::Bench']]],
-  ['up_20to_20the_20plottable_5',['Leaving the color/pen up to the plottable',['../classQCPScatterStyle.html#QCPScatterStyle-undefinedpen',1,'']]],
-  ['update_6',['update',['../classQCPPolarAxisAngular.html#a9f2dfb377cdf3ce22a451fa9d3ab47e6',1,'QCPPolarAxisAngular::update()'],['../classQCPColorScaleAxisRectPrivate.html#add049d464b9ef2ccdc638adc4ccb4aca',1,'QCPColorScaleAxisRectPrivate::update()'],['../classQCPColorScale.html#a259dcb6d3053a2cc3c197e9b1191ddbe',1,'QCPColorScale::update()'],['../classQCPAxisRect.html#add049d464b9ef2ccdc638adc4ccb4aca',1,'QCPAxisRect::update()'],['../classQCPLayout.html#a48ecc9c98ea90b547c3e27a931a8f7bd',1,'QCPLayout::update()'],['../classQCPLayoutElement.html#a929c2ec62e0e0e1d8418eaa802e2af9b',1,'QCPLayoutElement::update()']]],
-  ['updatelegendicon_7',['updateLegendIcon',['../classQCPColorMap.html#a5d8158b62d55fcfeaabcb68ce0083e87',1,'QCPColorMap']]],
-  ['updatenoteslist_8',['updateNotesList',['../classMainWindow.html#a568479243c968c890d3e6c17eb1e3574',1,'MainWindow']]],
-  ['updatephase_9',['UpdatePhase',['../classQCPLayoutElement.html#a0d83360e05735735aaf6d7983c56374d',1,'QCPLayoutElement']]],
-  ['updateposition_10',['updatePosition',['../classQCPItemTracer.html#a5b90296109e36384aedbc8908a670413',1,'QCPItemTracer']]],
-  ['uplayout_11',['upLayout',['../classQCPLayoutElement.html#a0d83360e05735735aaf6d7983c56374da5d1ccf5d79967c232c3c511796860045',1,'QCPLayoutElement']]],
-  ['upmargins_12',['upMargins',['../classQCPLayoutElement.html#a0d83360e05735735aaf6d7983c56374da288cb59a92280e47261a341f2813e676',1,'QCPLayoutElement']]],
-  ['uppreparation_13',['upPreparation',['../classQCPLayoutElement.html#a0d83360e05735735aaf6d7983c56374dad6119882eba136357c2f627992e527d3',1,'QCPLayoutElement']]],
-  ['usage_14',['usage',['../classQCPFinancial.html#qcpfinancial-usage',1,'Usage'],['../classQCPColorMap.html#qcpcolormap-usage',1,'Usage'],['../classQCPStatisticalBox.html#qcpstatisticalbox-usage',1,'Usage'],['../classQCPBars.html#qcpbars-usage',1,'Usage'],['../classQCPBarsGroup.html#qcpbarsgroup-usage',1,'Usage'],['../classQCPCurve.html#qcpcurve-usage',1,'Usage']]],
-  ['using_20items_15',['Using items',['../classQCPAbstractItem.html#items-using',1,'']]],
-  ['utf16_16',['UTF16',['../structUTF16.html',1,'']]],
-  ['utf16_3c_20wchar_5ft_20_3e_17',['UTF16&lt; wchar_t &gt;',['../structUTF16.html',1,'']]],
-  ['utf16be_18',['UTF16BE',['../structUTF16BE.html',1,'']]],
-  ['utf16le_19',['UTF16LE',['../structUTF16LE.html',1,'']]],
-  ['utf32_20',['UTF32',['../structUTF32.html',1,'']]],
-  ['utf32_3c_20unsigned_20_3e_21',['UTF32&lt; unsigned &gt;',['../structUTF32.html',1,'']]],
-  ['utf32be_22',['UTF32BE',['../structUTF32BE.html',1,'']]],
-  ['utf32le_23',['UTF32LE',['../structUTF32LE.html',1,'']]],
-  ['utf8_24',['UTF8',['../structUTF8.html',1,'']]]
+  ['вимоги_20лабораторної_20роботи_20№3_20ооп_0',['Вимоги Лабораторної Роботи №3 (ООП)',['../index.html#autotoc_md2',1,'']]],
+  ['відео_20демонстрація_20функціоналу_1',['Відео-Демонстрація Функціоналу',['../index.html#autotoc_md6',1,'']]]
 ];

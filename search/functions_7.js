@@ -1,11 +1,7 @@
 var searchData=
 [
-  ['hasanchor_0',['hasAnchor',['../classQCPAbstractItem.html#a84914f4516f9b38ef0bd89eafe3dbda7',1,'QCPAbstractItem']]],
-  ['haselement_1',['hasElement',['../classQCPLayoutGrid.html#ab0cf4f7edc9414a3bfaddac0f46dc0a0',1,'QCPLayoutGrid']]],
-  ['hasinvalidatedpaintbuffers_2',['hasInvalidatedPaintBuffers',['../classQCustomPlot.html#ad452b582348c8e99462d83fe1cd0279b',1,'QCustomPlot']]],
-  ['hasitem_3',['hasitem',['../classQCustomPlot.html#af0b57f35646079f93fa6161a65b36109',1,'QCustomPlot::hasItem()'],['../classQCPLegend.html#ad0f698e33db454a6c103b5206740e599',1,'QCPLegend::hasItem(QCPAbstractLegendItem *item) const']]],
-  ['hasitemwithplottable_4',['hasItemWithPlottable',['../classQCPLegend.html#a4b90a442af871582df85c2bc13f91e88',1,'QCPLegend']]],
-  ['hasparseerror_5',['hasparseerror',['../classGenericDocument.html#a510a0588db4eb372f5d81bc3646578fb',1,'GenericDocument::HasParseError()'],['../classGenericReader.html#ac417441794477ea747b63adb6d3653a9',1,'GenericReader::HasParseError()']]],
-  ['hasplottable_6',['hasPlottable',['../classQCustomPlot.html#a72cefbfbb9e699940e37be605bd9c51e',1,'QCustomPlot']]],
-  ['height_7',['height',['../classQCPAxisRect.html#acc4377809e79d9a089ab790f39429b0d',1,'QCPAxisRect::height()'],['../classQCPPolarAxisAngular.html#a1134ccb64704bf7b99ec99041a89ecf2',1,'QCPPolarAxisAngular::height()']]]
+  ['note_0',['Note',['../classNote.html#a023cdff4897a0a64af4d9c8cc82da423',1,'Note']]],
+  ['noteeditor_1',['noteeditor',['../classNoteEditor.html#ae6537ea1400662909d1b0a4f61873565',1,'NoteEditor::NoteEditor(NoteRepository *repository, QWidget *parent=nullptr)'],['../classNoteEditor.html#a4ee579576f02f10ef9025ec7bdf3b562',1,'NoteEditor::NoteEditor(NoteRepository *repository, const Note &amp;noteToEdit, QWidget *parent=nullptr)']]],
+  ['noterepository_2',['NoteRepository',['../classNoteRepository.html#a94c2fb1a0ad967767cc4f907ddadec09',1,'NoteRepository']]],
+  ['notewidget_3',['NoteWidget',['../classNoteWidget.html#a8a5ac05082198cdb6e8693840c7202c8',1,'NoteWidget']]]
 ];

@@ -1,7 +1,5 @@
 var files_dup =
 [
     [ "benchmarks", "dir_13a41d9ad64fb9ae396cb953294783cf.html", "dir_13a41d9ad64fb9ae396cb953294783cf" ],
-    [ "libs", "dir_6719ab1f1f7655efc2fa43f7eb574fd1.html", "dir_6719ab1f1f7655efc2fa43f7eb574fd1" ],
-    [ "src", "dir_68267d1309a1af8e8297ef4c3efbcdba.html", "dir_68267d1309a1af8e8297ef4c3efbcdba" ],
-    [ "tests", "dir_59425e443f801f1f2fd8bbe4959a3ccf.html", "dir_59425e443f801f1f2fd8bbe4959a3ccf" ]
+    [ "src", "dir_68267d1309a1af8e8297ef4c3efbcdba.html", "dir_68267d1309a1af8e8297ef4c3efbcdba" ]
 ];

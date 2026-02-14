@@ -110,10 +110,10 @@ Inheritance diagram for NoteEditor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae6537ea1400662909d1b0a4f61873565" id="r_ae6537ea1400662909d1b0a4f61873565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#ae6537ea1400662909d1b0a4f61873565">NoteEditor</a> (<a class="el" href="classNoteRepository.html">NoteRepository</a> *<a class="el" href="classWriter.html">repository</a>, QWidget *<a class="el" href="classWriter.html">parent</a>=<a class="el" href="classWriter.html">nullptr</a>)</td></tr>
+<tr class="memitem:ae6537ea1400662909d1b0a4f61873565" id="r_ae6537ea1400662909d1b0a4f61873565"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#ae6537ea1400662909d1b0a4f61873565">NoteEditor</a> (<a class="el" href="classNoteRepository.html">NoteRepository</a> *repository, QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:ae6537ea1400662909d1b0a4f61873565"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор для створення нової нотатки.  <br /></td></tr>
 <tr class="separator:ae6537ea1400662909d1b0a4f61873565"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ee579576f02f10ef9025ec7bdf3b562" id="r_a4ee579576f02f10ef9025ec7bdf3b562"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#a4ee579576f02f10ef9025ec7bdf3b562">NoteEditor</a> (<a class="el" href="classNoteRepository.html">NoteRepository</a> *<a class="el" href="classWriter.html">repository</a>, const <a class="el" href="classNote.html">Note</a> &amp;<a class="el" href="classWriter.html">noteToEdit</a>, QWidget *<a class="el" href="classWriter.html">parent</a>=<a class="el" href="classWriter.html">nullptr</a>)</td></tr>
+<tr class="memitem:a4ee579576f02f10ef9025ec7bdf3b562" id="r_a4ee579576f02f10ef9025ec7bdf3b562"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#a4ee579576f02f10ef9025ec7bdf3b562">NoteEditor</a> (<a class="el" href="classNoteRepository.html">NoteRepository</a> *repository, const <a class="el" href="classNote.html">Note</a> &amp;noteToEdit, QWidget *parent=nullptr)</td></tr>
 <tr class="memdesc:a4ee579576f02f10ef9025ec7bdf3b562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор для редагування існуючої нотатки.  <br /></td></tr>
 <tr class="separator:a4ee579576f02f10ef9025ec7bdf3b562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e188cc003725fbf4a76d1d2da029ed6" id="r_a8e188cc003725fbf4a76d1d2da029ed6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classNote.html">Note</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#a8e188cc003725fbf4a76d1d2da029ed6">getNote</a> () const</td></tr>
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf" id="r_a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classWriter.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf">changeEvent</a> (<a class="el" href="classWriter.html">QEvent</a> *<a class="el" href="classWriter.html">event</a>) <a class="el" href="classWriter.html">override</a></td></tr>
+<tr class="memitem:a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf" id="r_a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNoteEditor.html#a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf">changeEvent</a> (QEvent *event) override</td></tr>
 <tr class="memdesc:a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обробник подій для динамічного оновлення інтерфейсу.  <br /></td></tr>
 <tr class="separator:a0d2c8ad76a6f8bbb7d0cb1dcf35b1fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -149,7 +149,7 @@ Protected Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">QWidget *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code><a class="el" href="classWriter.html">nullptr</a></code>&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -200,7 +200,7 @@ Protected Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">QWidget *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code><a class="el" href="classWriter.html">nullptr</a></code>&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -238,9 +238,9 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classWriter.html">void</a> NoteEditor::changeEvent </td>
+          <td class="memname">void NoteEditor::changeEvent </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classWriter.html">QEvent</a> *&#160;</td>
+          <td class="paramtype">QEvent *&#160;</td>
           <td class="paramname"><em>event</em></td><td>)</td>
           <td></td>
         </tr>
@@ -254,7 +254,7 @@ Protected Member Functions</h2></td></tr>
 
 <p>Обробник подій для динамічного оновлення інтерфейсу. </p>
 <ul>
-<li>Перехоплює подію зміни мови (<code><a class="el" href="classWriter.html#af4f54830d6927d9daf5bd53bfd134dd3" title="Constructor.">QEvent::LanguageChange</a></code>) для негайного оновлення всіх елементів інтерфейсу, що підтримують інтернаціоналізацію. <dl class="params"><dt>Parameters</dt><dd>
+<li>Перехоплює подію зміни мови (<code>QEvent::LanguageChange</code>) для негайного оновлення всіх елементів інтерфейсу, що підтримують інтернаціоналізацію. <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">event</td><td>Подія, що надійшла від системи. </td></tr>
   </table>
