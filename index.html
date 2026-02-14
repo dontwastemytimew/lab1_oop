@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Main Page</title>
+<title>My Project: Лабораторна робота №3: Менеджер Нотаток (C++ / Qt)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -88,10 +88,74 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">My Project Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Лабораторна робота №3: Менеджер Нотаток (C++ / Qt) </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> Проєкт є застосунком для керування нотатками, який дозволяє користувачам динамічно створювати власні структури даних (схеми) та організовувати інформацію.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md2"></a>
+Вимоги Лабораторної Роботи №3 (ООП)</h2>
+<p>Головною метою Лабораторної роботи №3 було <b>реалізувати програму, яка використовує зовнішні бібліотеки для реалізації частини функціональності</b> (крім стандартних бібліотек C++ та фреймворку Qt). Цей проєкт був значно доопрацьований та розширений для виконання цієї вимоги.</p>
+<p><a href="https://docs.google.com/document/d/1AtfYBq3WI5Ve8d4pcb_eOiXYrrRThQtEziPmGtnJCyE/edit?usp=sharing">Посилання на Звіт у Google Docs</a></p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Стек Технологій та Зовнішні Бібліотеки</h2>
+<p>Проєкт використовує <b>C++20</b> та фреймворк <b>Qt</b> для кросплатформного GUI. Було інтегровано чотири ключові зовнішні бібліотеки:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Бібліотека   </th><th class="markdownTableHeadLeft">Роль у Проєкті   </th><th class="markdownTableHeadLeft">Використаний Функціонал    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b>nlohmann/json</b>   </td><td class="markdownTableBodyLeft"><em>Основна Серіалізація.</em> Основна бібліотека для збереження/завантаження даних у формат JSON.   </td><td class="markdownTableBodyLeft"><code><a class="el" href="classWriter.html#af4f54830d6927d9daf5bd53bfd134dd3" title="Constructor.">json::parse</a></code>, <code><a class="el" href="classWriter.html#af4f54830d6927d9daf5bd53bfd134dd3" title="Constructor.">json::dump</a></code>, робота з <code>QMap</code>/<code>QList</code>.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><b>RapidJSON</b>   </td><td class="markdownTableBodyLeft"><b>Порівняльний Аналіз.</b> Використовується для порівняння швидкості I/O з <code>nlohmann/json</code>.   </td><td class="markdownTableBodyLeft"><code>rapidjson::Writer</code>, <code>rapidjson::StringBuffer</code>, порівняльний аналіз швидкості.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><b><a class="el" href="nanobench_8h_source.html">nanobench.h</a></b>   </td><td class="markdownTableBodyLeft"><b>Бенчмаркінг Фреймворк.</b> Мінімалістичний фреймворк для точного вимірювання часу виконання функцій (наносекунди).   </td><td class="markdownTableBodyLeft">Точний вимір часу для порівняння JSON-бібліотек.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyLeft"><b><a class="el" href="classQCustomPlot.html" title="The central class of the library. This is the QWidget which displays the plot and interacts with the ...">QCustomPlot</a></b>   </td><td class="markdownTableBodyLeft"><em>Візуалізація Статистики.</em> Створення графіків (Гістограм) для відображення статистики використання програми.   </td><td class="markdownTableBodyLeft">Побудова графіків часу сесій у $StatisticsDialog$.   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="autotoc_md5"></a>
+Ключові Доопрацювання та Функціонал</h2>
+<p>Проєкт був розширений наступними ключовими функціями та візуальними елементами:</p>
+<ul>
+<li><b>Система Організації:</b> Реалізовано повний функціонал <b>сортування</b> (за датою, назвою), <b>фільтрації</b> та <b>пошуку</b> по нотатках.</li>
+<li><b>Закріплення (Pinning):</b> Додано механізм <b>закріплення нотаток</b> для пріоритезації відображення.</li>
+<li><b>Вбудовані Медіа:</b> Можливість додавати <b>зображення</b> до нотаток.</li>
+<li><b>Мініатюри:</b> На плашках нотаток відображаються <b>мініатюри</b> (прев'ю) зображень та тегів.</li>
+<li><b>Експорт у PDF:</b> Додано можливість <b>експорту нотатки у формат PDF</b> для зручного друку.</li>
+<li><b>Статистика:</b> Збір та візуалізація статистики часу використання програми за днями за допомогою <b><a class="el" href="classQCustomPlot.html" title="The central class of the library. This is the QWidget which displays the plot and interacts with the ...">QCustomPlot</a></b>.</li>
+<li><b>Візуальні Покращення:</b> Оновлено <b>дизайн</b> інтерфейсу (через QSS).</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Відео-Демонстрація Функціоналу</h2>
+<p>Коротка відео-презентація основних можливостей програми: керування схемами, сортування, інтернаціоналізація, експорт у PDF та аналітичний модуль. (Не весь функціонал продемонстровано, дещо було в минулій лабораторній)</p>
+<p><a href="https://drive.google.com/file/d/1x-GBwUtomvW4ZZkpjM_JhaeRN935ns4g/view?usp=sharing">Переглянути Демонстраційне Відео</a></p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md8"></a>
+Технічні Аспекти та Якість Коду</h2>
+<h3><a class="anchor" id="autotoc_md9"></a>
+1. Бенчмаркінг JSON I/O</h3>
+<p>Для об'єктивної оцінки продуктивності було реалізовано систему бенчмаркінгу, доступну у вікні налаштувань.</p>
+<ul>
+<li><b>Метод:</b> Вимірюється час серіалізації/десеріалізації $100,000$ синтетичних об'єктів для порівняння швидкості **<code>nlohmann/json</code>** та **<code>RapidJSON</code>**, використовуючи точний фреймворк **<code>nanobench</code>**.</li>
+<li><b>Результат:</b> Під час тестування <b>RapidJSON</b> показав себе в середньому <b>на <a class="el" href="classWriter.html#af4f54830d6927d9daf5bd53bfd134dd3" title="Constructor.">2.5</a>–3 рази швидшим</b> за <b>nlohmann/json</b> у процесі запису.</li>
+<li><b>Висновок:</b> Бенчмарк підтвердив, що вибір бібліотеки залежить від пріоритетів: <code>nlohmann/json</code> зручніший для розробки, тоді як <code>RapidJSON</code> — для чистої швидкості.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md10"></a>
+2. Юніт-Тестування</h3>
+<ul>
+<li>Проєкт містить <b>повний набір юніт-тестів</b> для забезпечення коректності та надійності.</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md11"></a>
+3. Документація, i18n та Логування</h3>
+<ul>
+<li>Проєкт повністю задокументовано з використанням <b>Doxygen</b>, документація генерується автоматично.</li>
+<li><b>i18n:</b> Повна підтримка перекладу інтерфейсу, включно з українською та англійською мовами.</li>
+<li><b>Логування:</b> Усі ключові події та помилки записуються у файл <code><a class="el" href="classWriter.html#af4f54830d6927d9daf5bd53bfd134dd3" title="Constructor.">log.txt</a></code> з часовими мітками.</li>
+</ul>
+<hr  />
+<p><a href="https://dontwastemytimew.github.io/labs/">Doxygen Documentation URL</a> </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

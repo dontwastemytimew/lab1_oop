@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\color{white}
+\pagecolor{black}
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+\[
+      \mathrm{MdAPE}(e) = \mathrm{med}\{| \frac{e_i - \mathrm{med}\{e\}}{e_i}| \}
+     \]
+\pagebreak
+
+$ \mathrm{med}\{e\} $
+\pagebreak
+
+$ | \frac{e_i - \mathrm{med}\{e\}}{e_i}| $
+\pagebreak
+
+\[
+         \mathrm{sumProduct}(a,b) = \sum_{i=1}^{n}a_i\cdot b_i
+     \]
+\pagebreak
+
+$ 2^{51} $
+\pagebreak
+
+\[
+20ns * 1000 * 11 \approx 0.2ms
+\]
+\pagebreak
+
+\[
+100\% * \frac{baseline}{runtime}
+\]
+\pagebreak
+
+$ \mathcal{O}(1) $
+\pagebreak
+
+$ \mathcal{O}(n) $
+\pagebreak
+
+$ \mathcal{O}(\log{}n) $
+\pagebreak
+
+$ \mathcal{O}(n\log{}n) $
+\pagebreak
+
+$ \mathcal{O}(n^2) $
+\pagebreak
+
+$ \mathcal{O}(n^3) $
+\pagebreak
+
+$ \mathcal{O}(\log{}\log{}n) $
+\pagebreak
+
+\end{document}
