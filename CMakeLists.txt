@@ -46,7 +46,12 @@ set(GUI_SOURCES
         src/gui/statisticsdialog.h src/gui/statisticsdialog.cpp src/gui/statisticsdialog.ui
 )
 
-add_executable(lab3 ${GUI_SOURCES})
+
+file(GLOB TS_FILES "i18n/*.ts")
+
+qt6_add_translation(QM_FILES ${TS_FILES})
+
+add_executable(lab3 ${GUI_SOURCES} ${QM_FILES})
 target_include_directories(lab3 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/gui)
 target_link_libraries(lab3 PRIVATE CoreLib QCustomPlotLib Qt6::Svg)
 

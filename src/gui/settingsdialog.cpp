@@ -248,11 +248,7 @@ void SettingsDialog::plotResults(double nlohmannTime, double rapidJsonTime)
 void SettingsDialog::on_languageComboBox_currentIndexChanged(int index)
 {
     QString langCode = ui->languageComboBox->itemData(index).toString();
-    bool newIsEnglish = (langCode == "en_US");
-
-    if (newIsEnglish == isEnglishActive) return;
-
-    isEnglishActive = newIsEnglish;
+    isEnglishActive = (langCode == "en_US");
 
     if (appTranslator) {
         qApp->removeTranslator(appTranslator);
@@ -264,14 +260,12 @@ void SettingsDialog::on_languageComboBox_currentIndexChanged(int index)
         appTranslator = new QTranslator(qApp);
         if (appTranslator->load(":/i18n/lab3_en_US.qm")) {
             qApp->installTranslator(appTranslator);
-            qInfo() << "Language changed to English";
-        } else {
-            qWarning() << "Failed to load English translation";
         }
-    } else {
-        qInfo() << "Language changed to Ukrainian (Default)";
-        QEvent languageChangeEvents(QEvent::LanguageChange);
-        QCoreApplication::sendEvent(qApp, &languageChangeEvents);
+    }
+
+    for (QWidget *widget : QApplication::allWidgets()) {
+        QEvent event(QEvent::LanguageChange);
+        QCoreApplication::sendEvent(widget, &event);
     }
 }
 

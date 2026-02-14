@@ -10,10 +10,9 @@
         <file>icons/star.png</file>
     </qresource>
 
-<!--    <qresource prefix="/i18n">-->
-<!--        <file>i18n/lab3_en_US.qm</file>-->
-<!--&lt;!&ndash;        <file>i18n/lab3_uk_UA.qm</file>&ndash;&gt;-->
-<!--    </qresource>-->
+    <qresource prefix="/i18n">
+        <file alias="lab3_en_US.qm">i18n/lab3_en_US.qm</file>
+    </qresource>
 
     <qresource prefix="/styles">
         <file>styles/dark.qss</file>
