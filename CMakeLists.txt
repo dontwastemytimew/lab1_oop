@@ -7,22 +7,26 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
-find_package(Qt6 COMPONENTS Core Gui Widgets Svg LinguistTools PrintSupport REQUIRED)
 
-include_directories(
-        ${CMAKE_CURRENT_SOURCE_DIR}/libs
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/core
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/gui
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
-)
+find_package(Qt6 COMPONENTS Core Gui Widgets Svg LinguistTools PrintSupport REQUIRED)
 
 set(CORE_SOURCES
         src/core/schema.h                   src/core/schema.cpp
         src/core/note.h                     src/core/note.cpp
         src/utils/logger.h                  src/utils/logger.cpp
         src/core/istorage_strategy.h        src/core/json_storage_strategy.h
+        src/core/rapidjson_storage_strategy.h
         src/core/note_repository.h          src/core/note_repository.cpp
-        src/core/export_service.cpp         src/core/statistics_service.cpp
+        src/core/export_service.h           src/core/export_service.cpp
+        src/core/statistics_service.h       src/core/statistics_service.cpp
+)
+
+add_library(CoreLib STATIC ${CORE_SOURCES})
+target_link_libraries(CoreLib PUBLIC Qt6::Core Qt6::Gui Qt6::Widgets Qt6::PrintSupport)
+target_include_directories(CoreLib PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/core
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs
 )
 
 add_library(QCustomPlotLib STATIC libs/qcustomplot.cpp libs/qcustomplot.h)
@@ -42,8 +46,20 @@ set(GUI_SOURCES
         src/gui/statisticsdialog.h src/gui/statisticsdialog.cpp src/gui/statisticsdialog.ui
 )
 
-add_executable(lab3 ${CORE_SOURCES} ${GUI_SOURCES})
-target_link_libraries(lab3 PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Svg Qt6::PrintSupport QCustomPlotLib)
+add_executable(lab3 ${GUI_SOURCES})
+target_include_directories(lab3 PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/gui)
+target_link_libraries(lab3 PRIVATE CoreLib QCustomPlotLib Qt6::Svg)
+
+add_executable(lab3_tests
+        tests/tests_main.cpp
+        tests/test_models.h
+        tests/test_repository.h
+        tests/test_io.h
+)
+target_link_libraries(lab3_tests PRIVATE CoreLib)
+
+add_executable(lab3_benchmarks benchmarks/benchmark_main.cpp)
+target_link_libraries(lab3_benchmarks PRIVATE CoreLib)
 
 set(PCH_HEADERS
         <QApplication> <QMainWindow> <QDialog> <QPushButton>
@@ -52,31 +68,10 @@ set(PCH_HEADERS
         "libs/json.hpp"
 )
 target_precompile_headers(lab3 PRIVATE ${PCH_HEADERS} "libs/qcustomplot.h")
-
-add_executable(lab3_tests
-        tests/tests_main.cpp
-        tests/test_models.h
-        tests/test_repository.h
-        tests/test_io.h
-        ${CORE_SOURCES}
-)
-target_link_libraries(lab3_tests PRIVATE Qt6::Core Qt6::PrintSupport)
 target_precompile_headers(lab3_tests PRIVATE ${PCH_HEADERS})
-
-add_executable(lab3_benchmarks
-        benchmarks/benchmark_main.cpp
-        ${CORE_SOURCES}
-)
-
-set_source_files_properties(benchmarks/benchmark_main.cpp
-        PROPERTIES SKIP_PRECOMPILE_HEADERS ON
-)
-
-target_link_libraries(lab3_benchmarks PRIVATE
-        Qt6::Core
-        Qt6::PrintSupport
-)
 target_precompile_headers(lab3_benchmarks PRIVATE ${PCH_HEADERS})
+
+set_source_files_properties(benchmarks/benchmark_main.cpp PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
 if (WIN32)
     set(QT_BIN_DIR "${CMAKE_PREFIX_PATH}/bin")
@@ -96,12 +91,6 @@ if (WIN32)
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 "${QT_PLUGIN_DIR}/platforms/qwindows.dll"
                 "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/platforms/"
-        )
-        add_custom_command(TARGET ${TARGET_NAME} POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/imageformats"
-                COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                "${QT_PLUGIN_DIR}/imageformats/qsvg.dll"
-                "$<TARGET_FILE_DIR:${TARGET_NAME}>/plugins/imageformats/"
         )
     endfunction()
 
