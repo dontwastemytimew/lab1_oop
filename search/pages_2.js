@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['лабораторна_20робота_20№3_3a_20менеджер_20нотаток_20c_20qt_0',['Лабораторна робота №3: Менеджер Нотаток (C++ / Qt)',['../index.html',1,'']]]
+  ['lab_201_3a_20refactoring_20object_20oriented_20design_20notes_20manager_0',['Lab 1: Refactoring &amp; Object-Oriented Design (Notes Manager)',['../index.html',1,'']]]
 ];
