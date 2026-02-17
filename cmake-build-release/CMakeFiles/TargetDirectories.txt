@@ -1,0 +1,17 @@
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/CoreLib.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/QCustomPlotLib.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_tests.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_benchmarks.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/edit_cache.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/rebuild_cache.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/CoreLib_autogen_timestamp_deps.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/CoreLib_autogen.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/QCustomPlotLib_autogen_timestamp_deps.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/QCustomPlotLib_autogen.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_autogen_timestamp_deps.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_autogen.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_tests_autogen_timestamp_deps.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_tests_autogen.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_benchmarks_autogen_timestamp_deps.dir
+D:/clionprojects/lab1_oop/cmake-build-release/CMakeFiles/lab3_benchmarks_autogen.dir

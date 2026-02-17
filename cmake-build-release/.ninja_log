@@ -1,0 +1,19 @@
+# ninja log v6
+9	537	7930548095742155	CoreLib_autogen/timestamp	511548a65503e202
+9	537	7930548095742155	CoreLib_autogen/mocs_compilation.cpp	511548a65503e202
+9	537	7930548095742155	D:/clionprojects/lab1_oop/cmake-build-release/CoreLib_autogen/timestamp	511548a65503e202
+9	537	7930548095742155	D:/clionprojects/lab1_oop/cmake-build-release/CoreLib_autogen/mocs_compilation.cpp	511548a65503e202
+541	1066	7930548096523394	CMakeFiles/CoreLib.dir/CoreLib_autogen/mocs_compilation.cpp.obj	7a0b4db99e8b202
+606	6079	7930548097183352	CMakeFiles/CoreLib.dir/src/core/schema.cpp.obj	e2f007a3b9fc880a
+742	9163	7930548098535769	CMakeFiles/CoreLib.dir/src/utils/logger.cpp.obj	4bf5d6e5f5e2407a
+675	9454	7930548097867812	CMakeFiles/CoreLib.dir/src/core/note.cpp.obj	8a46deca357464b3
+976	9600	7930548100872821	CMakeFiles/CoreLib.dir/src/core/statistics_service.cpp.obj	ff907aa904989f4b
+825	16468	7930548099368174	CMakeFiles/CoreLib.dir/src/core/note_repository.cpp.obj	4529382666da9645
+903	19416	7930548100137412	CMakeFiles/CoreLib.dir/src/core/export_service.cpp.obj	25f57e9937ff64e5
+19416	19622	7930548285279241	libCoreLib.a	f1c1d0bcad624643
+19622	20078	7930548291076449	lab3_benchmarks_autogen/timestamp	f18769cca2b22372
+19622	20078	7930548291076449	lab3_benchmarks_autogen/mocs_compilation.cpp	f18769cca2b22372
+19622	20078	7930548291076449	D:/clionprojects/lab1_oop/cmake-build-release/lab3_benchmarks_autogen/timestamp	f18769cca2b22372
+19622	20078	7930548291076449	D:/clionprojects/lab1_oop/cmake-build-release/lab3_benchmarks_autogen/mocs_compilation.cpp	f18769cca2b22372
+20078	20353	7930548291894387	CMakeFiles/lab3_benchmarks.dir/lab3_benchmarks_autogen/mocs_compilation.cpp.obj	5dbeb752a9bb909
+20138	30803	7930548292498473	CMakeFiles/lab3_benchmarks.dir/benchmarks/benchmark_main.cpp.obj	e8a2cc516a911c32
