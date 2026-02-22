@@ -1,0 +1,29 @@
+@startuml
+title Use Case Diagram
+left to right direction
+actor "Користувач" as User
+
+package "Менеджер Нотаток" {
+    usecase "Створити нотатку" as UC_Create
+    usecase "Керувати схемами" as UC_Schemas
+    usecase "Перегляд статистики" as UC_Stats
+    usecase "Експорт у PDF" as UC_Export
+    usecase "Пошук та фільтрація" as UC_Search
+    usecase "Налаштування (Тема/Мова)" as UC_Settings
+    usecase "Бенчмарк I/O" as UC_Bench
+
+    usecase "Редагувати нотатку" as UC_Edit
+}
+
+User --> UC_Create
+User --> UC_Schemas
+User --> UC_Stats
+User --> UC_Export
+User --> UC_Search
+User --> UC_Settings
+User --> UC_Bench
+User --> UC_Edit
+
+UC_Create ..> UC_Edit : <<include>>
+
+@enduml

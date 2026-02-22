@@ -1,0 +1,14 @@
+@startuml
+title Composite Structure (DataManager)
+class DataManager {
+    + saveToFile()
+}
+
+class "Logic: Notes List" as Notes
+class "Logic: Schemas List" as Schemas
+class "Analytics: Usage Stats" as Stats
+
+DataManager *-- Notes : composition
+DataManager *-- Schemas : composition
+DataManager *-- Stats : composition
+@enduml

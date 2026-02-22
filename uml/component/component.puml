@@ -1,0 +1,31 @@
+@startuml
+title Component Diagram
+skinparam componentStyle uml2
+
+package "Note Manager Application" {
+    component "NoteManager.exe" as App
+}
+
+package "External Libraries" {
+    component "Qt6 Framework" as Qt
+    component "nlohmann/json" as Json
+    component "rapidjson" as Rapid
+    component "nanobench" as Bench
+    component "QCustomPlot" as Plot
+}
+
+database "File System" {
+    file "notes.json" as DB
+    file "log.txt" as Log
+}
+
+App ..> Qt : links dynamic
+App ..> Json : includes header
+App ..> Rapid : includes header
+App ..> Bench : includes header
+App ..> Plot : compiles with
+
+App --> DB : reads/writes
+App --> Log : appends
+
+@enduml

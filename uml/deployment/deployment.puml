@@ -1,0 +1,19 @@
+@startuml
+title Deployment Diagram
+actor user
+
+node "User PC (Windows/Linux/macOS)" {
+    node "Operating System" {
+        component "NoteManager Application" as App
+
+        folder "Application Data" {
+            file "notes.json"
+            file "log.txt"
+        }
+    }
+}
+
+user --> App : Interacts via GUI
+App --> "notes.json" : JSON Serialization
+
+@enduml

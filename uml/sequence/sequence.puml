@@ -1,0 +1,38 @@
+@startuml
+title Sequence Diagram (Create & Save)
+actor User
+participant "NoteEditor" as Editor
+participant "Note" as NoteObj
+participant "DataManager" as DM
+database "File System" as FS
+
+User -> Editor : Click "Save" button
+activate Editor
+
+Editor -> Editor : validateInput()
+alt Input Valid
+    Editor -> NoteObj ** : <<create>> (title, fields)
+    activate NoteObj
+    NoteObj --> Editor : noteInstance
+    deactivate NoteObj
+
+    Editor -> DM : addNote(noteInstance)
+    activate DM
+    DM -> DM : m_notes.append(note)
+
+    DM -> DM : saveToFile("notes.json")
+    activate DM
+    DM -> FS : Write JSON
+    return Success
+    deactivate DM
+
+    DM --> Editor : void
+    deactivate DM
+
+    Editor -> Editor : Close Dialog
+else Input Invalid
+    Editor -> User : Show Error Message
+end
+
+deactivate Editor
+@enduml

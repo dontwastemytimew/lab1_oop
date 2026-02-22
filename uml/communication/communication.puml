@@ -1,0 +1,15 @@
+@startuml
+title Communication Diagram
+allow_mixing
+
+actor User
+object ":NoteEditor" as Editor
+object ":DataManager" as DM
+object ":Note" as Note
+
+User --> Editor : 1: clickSave()
+Editor -> Note : 2: <<create>>
+Editor -> DM : 3: addNote(note)
+DM -> DM : 4: saveToFile()
+
+@enduml

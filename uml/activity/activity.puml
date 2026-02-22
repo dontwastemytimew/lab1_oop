@@ -1,0 +1,24 @@
+@startuml
+title Activity Diagram (saveToFile)
+start
+:DataManager::saveToFile(path);
+
+:Open File (WriteOnly);
+if (File Opened?) then (yes)
+    :Create JSON Object root;
+
+    partition "Hardcoded Nlohmann Logic" {
+        :Serialize Schemas Array;
+        :Serialize Notes Array;
+        :Add Arrays to root;
+        :nlohmann::json::dump();
+    }
+
+    :Write to File Stream;
+    :Close File;
+    :Log "Data Saved Successfully";
+else (no)
+    :Log Error "Cannot open file";
+endif
+stop
+@enduml

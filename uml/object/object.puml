@@ -1,0 +1,31 @@
+@startuml
+title Object Diagram
+
+object "appWindow : MainWindow" as Win {
+    title = "Note Manager"
+}
+
+object "manager : DataManager" as DM {
+    m_notes count = 2
+    m_schemas count = 1
+}
+
+object "note1 : Note" as N1 {
+    title = "Buy Milk"
+    isPinned = true
+}
+
+object "note2 : Note" as N2 {
+    title = "Meeting"
+    isPinned = false
+}
+
+object "schema1 : Schema" as S1 {
+    name = "Todo Item"
+}
+
+Win --> DM
+DM --> N1
+DM --> N2
+DM --> S1
+@enduml

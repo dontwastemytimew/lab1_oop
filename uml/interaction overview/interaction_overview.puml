@@ -1,0 +1,22 @@
+@startuml
+title Interaction Overview (Saving)
+
+start
+:User clicks "Save Note";
+
+if (Validation passed?) then (Yes)
+    :Create Note Object;
+    :Call DataManager::addNote;
+
+    partition "Saving Process" {
+        :Serialize to JSON;
+        :Write to Disk;
+    }
+
+    :Update Main Window List;
+else (No)
+    :Show Error Message;
+endif
+
+stop
+@enduml

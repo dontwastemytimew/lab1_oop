@@ -1,0 +1,23 @@
+@startuml
+title Timing Diagram (Benchmark Process)
+robust "Benchmark Process" as BP
+
+@0
+BP is Idle
+
+@100
+BP is "Generating Data"
+
+@300
+BP is "Nlohmann Test"
+
+@600
+BP is "RapidJSON Test"
+
+@750
+BP is "Plotting Results"
+
+@800
+BP is Idle
+@900
+@enduml

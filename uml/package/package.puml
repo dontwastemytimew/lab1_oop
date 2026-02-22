@@ -1,0 +1,35 @@
+@startuml
+title Package Diagram
+skinparam componentStyle uml2
+
+package "GUI" {
+    component [MainWindow]
+    component [NoteEditor]
+    component [SchemaManager]
+    component [StatisticsDialog]
+    component [SettingsDialog]
+}
+
+package "Core" {
+    component [DataManager]
+    component [Note]
+    component [Schema]
+}
+
+package "Utils" {
+    component [Logger]
+}
+
+package "3rd Party Libs" {
+    component [Qt Framework]
+    component [nlohmann/json]
+    component [QCustomPlot]
+}
+
+[MainWindow] ..> [DataManager] : uses
+[NoteEditor] ..> [DataManager] : uses
+[StatisticsDialog] ..> [QCustomPlot] : uses
+[DataManager] ..> [Logger] : logs to
+[DataManager] ..> [nlohmann/json] : uses
+
+@enduml

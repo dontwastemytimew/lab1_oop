@@ -1,0 +1,56 @@
+@startuml
+title Class Diagram
+hide circle
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package "GUI" {
+    class MainWindow
+    class NoteEditor
+    class SettingsDialog
+}
+
+package "Core Logic" {
+    class DataManager {
+        - m_schemas : QList<Schema>
+        - m_notes : QList<Note>
+        __
+        + saveToFile(path)
+        + loadFromFile(path)
+        + runSystemBenchmark(count)
+    }
+
+    class Note {
+        - m_title : QString
+        - m_fields : QMap
+    }
+
+    class Schema {
+        - m_name : QString
+    }
+}
+
+package "Utils" {
+    class Logger <<static>> {
+        + init()
+        - messageHandler(...)
+    }
+}
+
+MainWindow --> DataManager
+NoteEditor --> DataManager
+SettingsDialog --> DataManager
+
+DataManager "1" *-- "*" Note
+DataManager "1" *-- "*" Schema
+
+DataManager ..> Logger : uses
+MainWindow ..> Logger : uses
+
+note right of DataManager
+  <b>God Object</b>
+  Керує пам'яттю, файлами
+  та статистикою одночасно.
+end note
+
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+title State Diagram (Application Flow)
+hide empty description
+
+[*] --> Idle : Application Start
+
+state Idle {
+    [*] --> ViewingList
+    ViewingList : User browses notes
+    ViewingList : Search filter active
+}
+
+Idle --> EditingNote : Double Click Note
+Idle --> EditingNote : Click "New Note"
+EditingNote --> Idle : Save / Cancel
+
+Idle --> ManagingSchemas : Click "Schemas"
+ManagingSchemas --> Idle : Close
+
+Idle --> Benchmarking : Open Settings -> Run
+Benchmarking --> Idle : Close Settings
+
+state EditingNote {
+    InputData : User typing
+    Saving : Writing to DataManager
+}
+
+state ManagingSchemas {
+    ListSchemas : Viewing templates
+    EditSchema : Changing fields
+}
+
+state Benchmarking {
+    Running : Serialization tests
+    Plotting : Drawing charts
+}
+@enduml
