@@ -1,13 +1,13 @@
 var index =
 [
-    [ "Архітектура та Рефакторинг", "index.html#autotoc_md2", [
-      [ "1. Розділення на компоненти", "index.html#autotoc_md3", null ],
-      [ "2. Патерни проєктування", "index.html#autotoc_md4", null ]
+    [ "Звіти про виконання (Reports)", "index.html#autotoc_md2", null ],
+    [ "* <strong>Глосарій:</strong> Опис ключових термінів проєкту: <a href=\"https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt\" ><strong>glossary.txt</strong></a>.", "index.html#autotoc_md3", null ],
+    [ "Архітектура та Моделювання (UML)", "index.html#autotoc_md4", [
+      [ "Ключові впровадження:", "index.html#autotoc_md5", null ]
     ] ],
-    [ "Технічні інструменти та Якість коду", "index.html#autotoc_md6", [
-      [ "Документація та Моделювання", "index.html#autotoc_md7", null ],
-      [ "Аналіз продуктивності (Benchmarking)", "index.html#autotoc_md8", null ],
-      [ "Інтернаціоналізація (i18n)", "index.html#autotoc_md9", null ],
+    [ "Технічні особливості і бонусні впровадження", "index.html#autotoc_md7", [
+      [ "Автоматизація та CI/CD", "index.html#autotoc_md8", null ],
+      [ "Аналіз продуктивності (Benchmarking)", "index.html#autotoc_md9", null ],
       [ "Quality Assurance", "index.html#autotoc_md10", null ]
     ] ],
     [ "Функціональні можливості", "index.html#autotoc_md12", null ]

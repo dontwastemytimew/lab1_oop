@@ -95,57 +95,57 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <b>Structured Notes Manager</b> — це застосунок на C++ для керування нотатками з підтримкою динамічних схем даних.</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md2"></a>
-Архітектура та Рефакторинг</h1>
-<p>Проєкт було перебудовано з монолітної структури на модульну архітектуру:</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-1. Розділення на компоненти</h2>
-<p>Проєкт розділено на незалежні модулі:</p><ul>
-<li><b>CoreLib:</b> Містить бізнес-логіку, моделі даних (<code><a class="el" href="classNote.html" title="Модель даних для однієї нотатки.">Note</a></code>, <code><a class="el" href="classSchema.html" title="Модель даних для шаблону (схеми) нотатки.">Schema</a></code>) та сервіси. Не залежить від графічного інтерфейсу.</li>
-<li><b>GUI:</b> Відповідає виключно за відображення та взаємодію з користувачем.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
-2. Патерни проєктування</h2>
+Звіти про виконання (Reports)</h1>
 <ul>
-<li><b>Repository Pattern:</b> Клас <code><a class="el" href="classNoteRepository.html" title="Центральний репозиторій для керування даними (Repository Pattern).">NoteRepository</a></code> інкапсулює логіку роботи з колекцією нотаток.</li>
-<li><b>Strategy Pattern:</b> Інтерфейс <code><a class="el" href="classIStorageStrategy.html" title="Інтерфейс для реалізації патерну Стратегія (Strategy Pattern).">IStorageStrategy</a></code> дозволяє динамічно змінювати алгоритм серіалізації даних.</li>
-<li><b>Service Layer:</b> Виділено спеціалізовані сервіси (<code><a class="el" href="classExportService.html" title="Сервіс, відповідальний виключно за експорт даних у зовнішні формати.">ExportService</a></code>, <code><a class="el" href="classStatisticsService.html" title="Сервіс для аналізу та обробки статистики використання.">StatisticsService</a></code>) для дотримання принципу SRP.</li>
+<li><b>Лабораторна робота №1a (Рефакторинг):</b> <a href="https://1drv.ms/w/c/1903c158639ca285/IQDYyQ5BwvKjQ6tjcd_OMwSjAXJPBSYsAxYYbDbcS-4FCHc?e=BKSDLv">Читати звіт</a></li>
+<li><b>Порівняння змін (GitHub Compare):</b> <a href="https://github.com/dontwastemytimew/lab1_oop/compare/2fa0fef...7159158">Дивитися зміни між версіями</a></li>
+<li><b>Лабораторна робота №1d (Ретроспектива інструменту):</b> <a href="https://1drv.ms/w/c/1903c158639ca285/IQA5jScVZYtdS4pGB9SFmEqlAUKc_4qqL_gZh0gEsL7fTWk?e=BKZt0B">Читати звіт</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: &lt;a href="https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt" &gt;&lt;strong&gt;glossary.txt&lt;/strong&gt;&lt;/a&gt;.</h1>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Архітектура та Моделювання (UML)</h1>
+<p>Проєкт було перебудовано з монолітної структури на модульну рівневу архітектуру (Layered Architecture).</p>
+<p>Повний набір діаграм (Class, Sequence, Activity, Component тощо) доступний тут:</p>
+<p><b><a href="https://github.com/dontwastemytimew/lab1_oop/tree/main/uml">Переглянути UML діаграми (Source &amp; PNG)</a></b></p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Ключові впровадження:</h2>
+<ul>
+<li><b>Розділення на компоненти (CMake):</b> Логіку винесено в окрему статичну бібліотеку <code>CoreLib</code>, що дозволило відокремити бізнес-правила від GUI.</li>
+<li><b>Repository Pattern:</b> Ізоляція роботи з даними через клас <code><a class="el" href="classNoteRepository.html" title="Центральний репозиторій для керування даними (Repository Pattern).">NoteRepository</a></code>.</li>
+<li><b>Strategy Pattern:</b> Впровадження інтерфейсу <code><a class="el" href="classIStorageStrategy.html" title="Інтерфейс для реалізації патерну Стратегія (Strategy Pattern).">IStorageStrategy</a></code> для динамічної зміни формату серіалізації.</li>
+<li><b>Service Layer:</b> Виділення <code><a class="el" href="classExportService.html" title="Сервіс, відповідальний виключно за експорт даних у зовнішні формати.">ExportService</a></code> та <code><a class="el" href="classStatisticsService.html" title="Сервіс для аналізу та обробки статистики використання.">StatisticsService</a></code> для дотримання принципу SRP (SOLID).</li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md6"></a>
-Технічні інструменти та Якість коду</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
-Документація та Моделювання</h2>
-<ul>
-<li><b>Doxygen:</b> Технічна документація генерується автоматично через GitHub Actions. <a href="https://dontwastemytimew.github.io/lab1_oop/"><b>Переглянути документацію</b></a></li>
-<li><b>UML:</b> Діаграми будуть доступні в папці проєкту.</li>
-<li><b>Глосарій:</b> Опис ключових термінів проєкту: <a href="https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt"><b>glossary.txt</b></a>.</li>
-</ul>
+<h1><a class="anchor" id="autotoc_md7"></a>
+Технічні особливості і бонусні впровадження</h1>
 <h2><a class="anchor" id="autotoc_md8"></a>
-Аналіз продуктивності (Benchmarking)</h2>
-<p>Реалізовано порівняльний аналіз стратегій серіалізації:</p><ul>
-<li>Порівняння швидкості запису/читання <b>nlohmann/json</b> проти <b>RapidJSON</b>.</li>
-<li>Використання бібліотеки <code>nanobench.h</code> для точних вимірів часу виконання операцій.</li>
+Автоматизація та CI/CD</h2>
+<ul>
+<li><b>GitHub Actions:</b> Налаштовано автоматичний Pipeline для перевірки збірки та автоматичної генерації документації.</li>
+<li><b>Doxygen:</b> Технічна документація генерується з коду при кожному коміті. <a href="https://dontwastemytimew.github.io/lab1_oop/"><b>Відкрити документацію (GitHub Pages)</b></a></li>
 </ul>
 <h2><a class="anchor" id="autotoc_md9"></a>
-Інтернаціоналізація (i18n)</h2>
+Аналіз продуктивності (Benchmarking)</h2>
 <ul>
-<li>Підтримка динамічного перемикання мови інтерфейсу (English / Ukrainian).</li>
+<li>Реалізовано вбудований модуль для порівняння бібліотек <b>nlohmann/json</b> та <b>RapidJSON</b>.</li>
+<li>Використано фреймворк <b>nanobench.h</b> для отримання точних метрик у наносекундах.</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md10"></a>
 Quality Assurance</h2>
 <ul>
-<li><b>Unit Tests:</b> Покриття тестів для бізнес-логіки.</li>
-<li><b>Logging:</b> Система логування подій у файл та консоль.</li>
+<li><b>Unit Testing:</b> Покриття тестів для логіки <code>CoreLib</code> з використанням <code>QTest</code>.</li>
+<li><b>Logging:</b> Власна система логування (папка <code>utils</code>), що фіксує стан системи у <code>log.txt</code>.</li>
 </ul>
 <hr  />
 <h1><a class="anchor" id="autotoc_md12"></a>
 Функціональні можливості</h1>
 <ol type="1">
-<li><b>Динамічні схеми:</b> Створення власних типів нотаток.</li>
-<li><b>Smart Search &amp; Sort:</b> Фільтрація за текстом, тегами, датою.</li>
-<li><b>Експорт:</b> Збереження нотаток у <b>PDF</b> або <b>JSON</b>.</li>
-<li><b>Статистика:</b> Візуалізація активності користувача (графіки <b>QCustomPlot</b>).</li>
-<li><b>UI/UX:</b> Темна тема, закріплення нотаток, підтримка зображень. </li>
+<li><b>Динамічні схеми:</b> Можливість створювати власні типи нотаток з довільними полями.</li>
+<li><b>Smart Search &amp; Sort:</b> Сортування (AZ/ZA, дата) та фільтрація в реальному часі.</li>
+<li><b>Експорт:</b> Генерація <b>PDF-документів</b> зі складною версткою та зображеннями.</li>
+<li><b>Статистика:</b> Візуалізація активності користувача за допомогою графіків <b>QCustomPlot</b>.</li>
+<li><b>UI/UX:</b> Підтримка тем (Light/Dark), інтернаціоналізація (i18n), закріплення нотаток (Pinning). </li>
 </ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
