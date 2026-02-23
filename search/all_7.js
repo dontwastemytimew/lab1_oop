@@ -11,6 +11,5 @@ var searchData=
   ['gettags_8',['gettags',['../classNote.html#af6063084506534ac43a44c9a0f840f09',1,'Note::getTags()'],['../classTagEditor.html#ac8d421bccc93ee2846d1de06197985d1',1,'TagEditor::getTags()']]],
   ['gettitle_9',['getTitle',['../classNote.html#a86dc48a4f59045279e292513b39f3709',1,'Note']]],
   ['getuseractivity_10',['getUserActivity',['../classStatisticsService.html#adaffed3f26e782ad92489d4779c73032',1,'StatisticsService']]],
-  ['github_20com_20dontwastemytimew_20lab1_5foop_20blob_20main_20glossary_20txt_20glossary_20txt_20a_11',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: &lt;a href=&quot;https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt&quot; &gt;glossary.txt&lt;/a&gt;.',['../index.html#autotoc_md3',1,'']]],
-  ['glossary_20txt_20glossary_20txt_20a_12',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: &lt;a href=&quot;https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt&quot; &gt;glossary.txt&lt;/a&gt;.',['../index.html#autotoc_md3',1,'']]]
+  ['glossary_20txt_20glossary_20txt_20a_11',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: &lt;a href=&quot;./glossary.txt&quot; &gt;glossary.txt&lt;/a&gt;.',['../index.html#autotoc_md3',1,'']]]
 ];
