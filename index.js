@@ -1,7 +1,7 @@
 var index =
 [
     [ "Звіти про виконання (Reports)", "index.html#autotoc_md2", null ],
-    [ "* <strong>Глосарій:</strong> Опис ключових термінів проєкту: <a href=\"./glossary.txt\" >glossary.txt</a>.", "index.html#autotoc_md3", null ],
+    [ "* <strong>Глосарій:</strong> <a href=\"glossary.txt\" >Опис ключових термінів проєкту</a>.", "index.html#autotoc_md3", null ],
     [ "Архітектура та Моделювання (UML)", "index.html#autotoc_md4", [
       [ "Ключові впровадження:", "index.html#autotoc_md5", null ]
     ] ],

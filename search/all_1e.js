@@ -2,6 +2,6 @@ var searchData=
 [
   ['та_20моделювання_20uml_0',['Архітектура та Моделювання (UML)',['../index.html#autotoc_md4',1,'']]],
   ['та_20ci_20cd_1',['Автоматизація та CI/CD',['../index.html#autotoc_md8',1,'']]],
-  ['термінів_20проєкту_3a_20a_20href_20glossary_20txt_20glossary_20txt_20a_2',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: &lt;a href=&quot;./glossary.txt&quot; &gt;glossary.txt&lt;/a&gt;.',['../index.html#autotoc_md3',1,'']]],
+  ['термінів_20проєкту_20a_2',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; &lt;a href=&quot;glossary.txt&quot; &gt;Опис ключових термінів проєкту&lt;/a&gt;.',['../index.html#autotoc_md3',1,'']]],
   ['технічні_20особливості_20і_20бонусні_20впровадження_3',['Технічні особливості і бонусні впровадження',['../index.html#autotoc_md7',1,'']]]
 ];
