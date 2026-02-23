@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['tageditor_0',['tageditor',['../classTagEditor.html',1,'TagEditor'],['../classTagEditor.html#a019bcf98d93437ed608d18b5af7d5276',1,'TagEditor::TagEditor()']]],
-  ['txt_1',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt',['../index.html#autotoc_md3',1,'']]],
-  ['type_2',['type',['../structField.html#adeae4a3becc12da447b8f8a2f8500506',1,'Field']]]
+  ['uml_0',['Архітектура та Моделювання (UML)',['../index.html#autotoc_md4',1,'']]],
+  ['updatenoteslist_1',['updateNotesList',['../classMainWindow.html#a568479243c968c890d3e6c17eb1e3574',1,'MainWindow']]]
 ];

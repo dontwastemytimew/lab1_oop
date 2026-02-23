@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['https_3a_20github_20com_20dontwastemytimew_20lab1_5foop_20blob_20main_20glossary_20txt_0',['* &lt;strong&gt;Глосарій:&lt;/strong&gt; Опис ключових термінів проєкту: https://github.com/dontwastemytimew/lab1_oop/blob/main/glossary.txt',['../index.html#autotoc_md3',1,'']]]
+  ['importfromjson_0',['importFromJson',['../classExportService.html#a531f4a0199603e5b8e364d098b862c72',1,'ExportService']]],
+  ['init_1',['init',['../classLogger.html#ad9f38f9cc2d75a6207f4972427aa74f1',1,'Logger']]],
+  ['ispinned_2',['isPinned',['../classNote.html#aaa859f757e3960742d0dc36feadeb9df',1,'Note']]],
+  ['istoragestrategy_3',['IStorageStrategy',['../classIStorageStrategy.html',1,'']]]
 ];

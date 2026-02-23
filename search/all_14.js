@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7eschemaeditor_0',['~SchemaEditor',['../classSchemaEditor.html#a90d83e871fd28ed14721dc1b1a62fac5',1,'SchemaEditor']]],
-  ['_7etageditor_1',['~TagEditor',['../classTagEditor.html#a29463f2459679207d6d1daf92e7ee8e0',1,'TagEditor']]]
+  ['автоматизація_20та_20ci_20cd_0',['Автоматизація та CI/CD',['../index.html#autotoc_md8',1,'']]],
+  ['аналіз_20продуктивності_20benchmarking_1',['Аналіз продуктивності (Benchmarking)',['../index.html#autotoc_md9',1,'']]],
+  ['архітектура_20та_20моделювання_20uml_2',['Архітектура та Моделювання (UML)',['../index.html#autotoc_md4',1,'']]]
 ];
