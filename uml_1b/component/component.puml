@@ -1,0 +1,23 @@
+@startuml
+title Архітектура компонентів Classroom
+
+package "Classroom Web App" {
+  [Auth Module] as Auth
+  [Course Manager] as CM
+  [Assignment Service] as AS
+  [Notification Engine] as NE
+}
+
+database "Classroom DB" as DB
+
+cloud "Google Services" {
+  [Google Drive API] as Drive
+  [Gmail API] as Mail
+}
+
+Auth --> DB : перевірка
+CM --> DB : збереження курсів
+AS --> Drive : збереження файлів робіт
+NE --> Mail : надсилання сповіщень
+CM ..> AS : використовує
+@enduml

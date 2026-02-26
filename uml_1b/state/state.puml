@@ -1,0 +1,16 @@
+@startuml
+title Життєвий цикл роботи (Submission States)
+
+[*] --> ASSIGNED : Викладач опублікував завдання
+
+ASSIGNED --> TURNED_IN : Студент натиснув "Здати"
+ASSIGNED --> LATE : Дедлайн минув, робота не здана
+
+LATE --> TURNED_IN : Студент здав із запізненням
+
+TURNED_IN --> RETURNED : Викладач повернув без оцінки
+RETURNED --> TURNED_IN : Студент виправив і здав знову
+
+TURNED_IN --> GRADED : Викладач виставив оцінку
+GRADED --> [*] : Завдання завершено
+@enduml

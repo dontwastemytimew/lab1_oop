@@ -1,0 +1,22 @@
+@startuml
+title Smart Revision Lifecycle
+
+[*] --> ASSIGNED
+ASSIGNED --> TURNED_IN : Студент здав
+
+state TURNED_IN {
+  [*] --> PENDING_REVIEW
+}
+
+TURNED_IN --> UNDER_REVISION : Викладач натиснув\n"Request Changes"
+note on link
+  Система встановлює
+  Soft Deadline (+48h)
+end note
+
+UNDER_REVISION --> TURNED_IN : Студент виправив\n(спроба N+1)
+UNDER_REVISION --> FAILED : Дедлайн виправлення\nминув
+
+TURNED_IN --> GRADED : Викладач виставив бал
+GRADED --> [*]
+@enduml

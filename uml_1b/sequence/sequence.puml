@@ -1,0 +1,28 @@
+@startuml
+title Процес здачі завдання (Turn In)
+
+actor Студент as S
+participant "Classroom UI" as UI
+participant "Backend Server" as SRV
+participant "Google Drive API" as GDrive
+database "Database" as DB
+
+S -> UI : Вибрати файл та натиснути "Здати"
+activate UI
+UI -> GDrive : Завантажити файл (upload)
+activate GDrive
+GDrive --> UI : file_id / success
+deactivate GDrive
+
+UI -> SRV : POST /submit (assignment_id, file_id)
+activate SRV
+SRV -> DB : Update Submission Status (TURNED_IN)
+activate DB
+DB --> SRV : ok
+deactivate DB
+SRV --> UI : 200 OK (Submitted)
+deactivate SRV
+
+UI --> S : Повідомлення "Роботу здано"
+deactivate UI
+@enduml

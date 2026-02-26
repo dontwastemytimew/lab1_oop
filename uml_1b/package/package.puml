@@ -1,0 +1,35 @@
+@startuml
+title Структура пакетів Google Classroom
+
+package "com.google.classroom.api" {
+  [Public API Controllers]
+  [Data Transfer Objects (DTO)]
+}
+
+package "com.google.classroom.core" {
+  package "User Management" {
+    [Auth Service]
+    [Profile Service]
+  }
+
+  package "Course Management" {
+    [Course Service]
+    [Enrollment Service]
+  }
+
+  package "Assignment Logic" {
+    [Assignment Service]
+    [Submission Processor]
+    [Grading Engine]
+  }
+}
+
+package "com.google.classroom.infrastructure" {
+  [Database Repository]
+  [File Storage Adapter]
+  [Email Gateway]
+}
+
+"com.google.classroom.api" ..> "com.google.classroom.core" : використовує
+"com.google.classroom.core" ..> "com.google.classroom.infrastructure" : зберігає дані через
+@enduml

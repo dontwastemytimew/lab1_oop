@@ -1,0 +1,56 @@
+@startuml
+title Структура даних Google Classroom
+
+abstract class User {
+  +id: String
+  +name: String
+  +email: String
+  +login()
+}
+
+class Teacher extends User {
+  +createCourse()
+  +gradeAssignment()
+}
+
+class Student extends User {
+  +joinCourse(code)
+  +submitWork()
+}
+
+class Course {
+  +courseCode: String
+  +title: String
+  +section: String
+  +inviteLink: String
+}
+
+class Assignment {
+  +id: String
+  +title: String
+  +description: String
+  +dueDate: DateTime
+  +maxPoints: int
+}
+
+class Submission {
+  +id: String
+  +fileUrl: String
+  +status: SubmissionStatus
+  +grade: int
+  +submitDate: DateTime
+}
+
+enum SubmissionStatus {
+  ASSIGNED
+  TURNED_IN
+  RETURNED
+  LATE
+}
+
+Course "1" *-- "0..*" Assignment : містить
+Assignment "1" *-- "0..*" Submission : має відповіді
+Teacher "1..*" -- "0..*" Course : викладає
+Student "0..*" -- "0..*" Course : навчається
+Student "1" -- "0..*" Submission : створює
+@enduml

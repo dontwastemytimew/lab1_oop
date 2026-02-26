@@ -1,0 +1,22 @@
+@startuml
+left to right direction
+actor "Викладач" as T
+actor "Студент" as S
+
+package "Google Classroom" {
+  usecase "Створити курс" as UC1
+  usecase "Опублікувати завдання" as UC2
+  usecase "Оцінити роботу" as UC3
+  usecase "Приєднатися за кодом" as UC4
+  usecase "Здати роботу" as UC5
+  usecase "Коментувати" as UC6
+}
+
+T --> UC1
+T --> UC2
+T --> UC3
+S --> UC4
+S --> UC5
+S --> UC6
+T --> UC6
+@enduml

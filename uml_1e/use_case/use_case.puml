@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+actor "Студент на парі" as S
+
+package "Дистанційне навчання" {
+  usecase "Слухати лекцію (фоновий режим)" as UC1
+  usecase "Зам'ютити мікрофон" as UC2
+  usecase "Відповісти, коли раптово запитали прізвище" as UC3
+  usecase "Скріншотити відповіді в чаті" as UC4
+  usecase "Робити вигляд, що проблеми з інтернетом" as UC5
+}
+
+S --> UC1
+S --> UC2
+S --> UC3
+S --> UC4
+S --> UC5
+
+note right of UC5
+  Використовується, коли
+  не знаєш відповідь
+end note
+@enduml

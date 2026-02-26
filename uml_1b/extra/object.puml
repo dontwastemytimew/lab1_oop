@@ -1,0 +1,22 @@
+@startuml
+title Снапшот об'єктів (Студент виправляє)
+
+object "currentLab : Assignment" as A {
+  title = "Лабораторна №1"
+  maxIterations = 3
+}
+
+object "mySubmission : Submission" as S {
+  iterationCount = 2
+  status = UNDER_REVISION
+  revisionDeadline = "2026-02-27 23:59"
+}
+
+object "profComment : Comment" as C {
+  text = "Виправте помилку в діаграмі класів"
+  author = "Викладач"
+}
+
+A "1" -- "1" S : відстежує
+S "1" *-- "1" C : містить зауваження
+@enduml

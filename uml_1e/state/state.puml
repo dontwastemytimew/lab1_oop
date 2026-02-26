@@ -1,0 +1,10 @@
+@startuml
+title Стани студентського квитка
+[*] --> Fresh : Видача в деканаті
+Fresh --> Active : Використання для пільг у потязі
+Active --> Lost : Забув у куртці
+Lost --> Active : Знайшов через семестр
+Active --> Expired : Закінчив університет
+Expired --> Bookmark : Використовується як закладка для книги
+Expired --> [*]
+@enduml

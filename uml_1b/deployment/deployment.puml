@@ -1,0 +1,24 @@
+@startuml
+title Розгортання системи (Deployment)
+
+node "User Device" <<Device>> {
+  node "Web Browser" <<Execution Environment>> {
+    artifact "Classroom Frontend"
+  }
+}
+
+node "Google Cloud Platform" <<Cloud>> {
+  node "Application Server" <<Server>> {
+    artifact "Backend Service (Java/Go)"
+  }
+
+  node "Storage Server" <<Server>> {
+    database "PostgreSQL / Spanner" as DB
+    artifact "Google Drive Storage" as GDrive
+  }
+}
+
+"User Device" -- "Application Server" : HTTPS / JSON API
+"Application Server" -- DB : SQL
+"Application Server" -- GDrive : gRPC
+@enduml

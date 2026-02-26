@@ -1,0 +1,31 @@
+@startuml
+title Interaction Overview: Smart Revision Management
+
+state "Етап 1: Підготовка завдання" as S1 {
+  [*] --> Setup : Викладач встановлює ліміт ітерацій (N)
+}
+
+state "Етап 2: Робота студента" as S2 {
+  Setup --> Submission : Студент завантажує та здає роботу
+}
+
+state "Етап 3: Цикл перевірки" as S3 {
+  Submission --> Review : Викладач відкриває роботу
+
+  Review --> Decision : Оцінювання
+
+  Decision --> Graded : [Все добре]
+  Decision --> UnderRevision : [Потрібні правки]
+
+  UnderRevision --> CheckAttempts : Перевірка лічильника
+
+  CheckAttempts --> Resubmit : [Спроби < N] : Встановлення дедлайну +48г
+  CheckAttempts --> AutoFail : [Спроби >= N] : Виставлення мін. балу
+
+  Resubmit --> Review : Студент здав оновлену версію
+}
+
+Graded --> [*]
+AutoFail --> [*]
+
+@enduml
